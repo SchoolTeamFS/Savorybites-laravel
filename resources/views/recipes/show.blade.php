@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $recipe->recipeTitle }}</title>
-</head>
-<body>
+@extends('recipes.app')
+@section('content')
     <h1>{{ $recipe->recipeTitle }}</h1>
     <h3>{{$recipe->description}}</h3>
     <img src={{$recipe->picture}}>
@@ -38,5 +32,4 @@
         @endforeach
     </ul>
 
-</body>
-</html>
+
