@@ -47,6 +47,7 @@ class RecipeController extends Controller
         $comments = $recipe->comments;
         $ratings = $recipe->ratings;
     
+        // Retourner la vue avec les données nécessaires
         return view('recipes.show', compact('recipe', 'ingredients', 'preparationSteps', 'comments', 'ratings'));
     }
     

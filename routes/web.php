@@ -30,8 +30,9 @@ Route::middleware('auth')->group(function () {
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\CategoryController;
 
-Route::get('/{categ}/{title}', [RecipeController::class, 'show'])->name('recipe.show');
-Route::get('/categorie/{category}', [CategoryController::class, 'showCategory'])->name('recipes.categ');
+Route::get('/{category}/{title}', [RecipeController::class, 'show'])->name('recipe.show');
+Route::get('/{category}', [CategoryController::class, 'showCategory'])->name('recipes.categ');
 // Route::get('/recipe/{id}', [RecipeController::class, 'show']);
+// Route::get('/recette/{id}', [RecipeController::class, 'show'])->name('recipes.show');
 
 require __DIR__.'/auth.php';

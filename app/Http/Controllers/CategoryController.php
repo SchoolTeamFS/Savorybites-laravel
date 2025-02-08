@@ -35,17 +35,18 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function showCategory($category)
+    public function showCategory($categorySlug)
     {
-        $categoryName = str_replace('-', ' ', $category);
-        
-        $category = Category::where('name', $categoryName)->firstOrFail();
-        
+        $categoryName = str_replace('-', ' ', $categorySlug);
+    
+        $category = Category::where('name', $categoryName)->first();
+    
+        if (!$category) {
+            abort(404, 'Catégorie non trouvée');
+        }
         $recipes = $category->recipes; 
-        
-        return view('recipes.category', compact('recipes', 'category'));
+        return view('recipes.categ', compact('recipes', 'categoryName'));
     }
-
 
     /**
      * Show the form for editing the specified resource.
