@@ -34,24 +34,15 @@ class RecipeController extends Controller
     }
     public function show($category, $recipeTitle)
     {
-        // Convertir le slug de la catégorie en nom lisible
         $categoryName = str_replace('-', ' ', $category);
-        
-        // Récupérer la catégorie avec le nom converti
         $category = Category::where('name', $categoryName)->firstOrFail();
-        
-        // Récupérer la recette dans la catégorie spécifiée
         $recipe = Recipe::where('category_id', $category->id)
                         ->where('recipeTitle', str_replace('-', ' ', $recipeTitle)) 
                         ->firstOrFail();
-        
-        // Récupérer les ingrédients, étapes de préparation, commentaires, évaluations
         $ingredients = $recipe->ingredients;
         $preparationSteps = $recipe->preparationSteps;
         $comments = $recipe->comments;
         $ratings = $recipe->ratings;
-        
-        // Passer la catégorie et la recette à la vue
         return view('recipes.show', compact('recipe', 'ingredients', 'preparationSteps', 'comments', 'ratings', 'category'));
     }
     

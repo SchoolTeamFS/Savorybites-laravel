@@ -2,12 +2,13 @@
 @section('content')
 <nav>
     <p>
-        <a href="{{ url('/') }}">Home</a> 
+        <a href="{{ url('/categories') }}">Categories</a> 
         @isset($category)
             > <a href="{{ route('recipes.categ', ['category' => str_replace(' ', '-', $category->name)]) }}">
                 {{ $category->name }}
             </a>
         @endisset
+
     </p>
 </nav>
     <h1>categ:{{ $categoryName }}</h1>
