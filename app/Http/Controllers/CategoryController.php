@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Recipe;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -34,10 +35,17 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Category $category)
+    public function showCategory($category)
     {
-        //
+        $categoryName = str_replace('-', ' ', $category);
+        
+        $category = Category::where('name', $categoryName)->firstOrFail();
+        
+        $recipes = $category->recipes; 
+        
+        return view('recipes.category', compact('recipes', 'category'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
