@@ -1,9 +1,26 @@
 @extends('recipes.app')
 @section('content')
+
+    {{-- Affichage du chemin --}}
+    <nav>
+        <p>
+            <a href="{{ url('/') }}">Home</a> 
+            @isset($category)
+                > <a href="{{ route('recipes.categ', ['category' => str_replace(' ', '-', $category->name)]) }}">
+                    {{ $category->name }}
+                </a>
+            @endisset
+            @isset($recipe)
+                > {{ $recipe->recipeTitle }}
+            @endisset
+        </p>
+    </nav>
+
     <h1>{{ $recipe->recipeTitle }}</h1>
-    <h3>{{$recipe->description}}</h3>
-    <img src={{$recipe->picture}}>
-    <h4>{{$recipe->created_at}}</h4>
+    <h3>{{ $recipe->description }}</h3>
+    <img src="{{ asset($recipe->picture) }}" alt="{{ $recipe->recipeTitle }}">
+    <h4>Publié le : {{ $recipe->created_at->format('d M Y') }}</h4>
+
     <h2>Ingredients</h2>
     <ul>
         @foreach($ingredients as $ingredient)
@@ -32,4 +49,4 @@
         @endforeach
     </ul>
 
-
+@endsection

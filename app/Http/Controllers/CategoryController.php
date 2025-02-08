@@ -41,15 +41,31 @@ class CategoryController extends Controller
     public function showCategory($categorySlug)
     {
         $categoryName = str_replace('-', ' ', $categorySlug);
-    
         $category = Category::where('name', $categoryName)->first();
     
         if (!$category) {
             abort(404, 'Catégorie non trouvée');
         }
+    
         $recipes = $category->recipes; 
-        return view('recipes.categ', compact('recipes', 'categoryName'));
+        return view('recipes.categ', compact('recipes', 'category', 'categoryName'));
     }
+    
+    // public function showRecipe($categorySlug, $recipeSlug)
+    // {
+    //     $categoryName = str_replace('-', ' ', $categorySlug);
+    //     $recipeTitle = str_replace('-', ' ', $recipeSlug);
+    
+    //     $category = Category::where('name', $categoryName)->first();
+    //     $recipe = Recipe::where('recipeTitle', $recipeTitle)->first();
+    
+    //     if (!$category || !$recipe) {
+    //         abort(404, 'Recette non trouvée');
+    //     }
+    
+    //     return view('recipes.show', compact('category', 'recipe', 'categoryName'));
+    // }
+    
 
     /**
      * Show the form for editing the specified resource.
