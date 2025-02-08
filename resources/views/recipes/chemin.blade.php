@@ -8,7 +8,7 @@
 <body>
     <h1>Chemin de la Recette</h1>
     <p>
-        <a href="{{ url('/') }}">Accueil</a> > 
+        <a href="{{ url('/') }}">Home</a> > 
         <a href="{{ route('recipes.categ', ['category' => str_replace(' ', '-', $category->name)]) }}">
             {{ $category->name }}
         </a>

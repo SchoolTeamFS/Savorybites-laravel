@@ -1,6 +1,6 @@
 @extends('recipes.app')
 @section('content')
-    <h1>Recettes de la catégorie {{ $categoryName }}</h1>
+    <h1>categ:{{ $categoryName }}</h1>
 
     <ul>
         @foreach($recipes as $recipe)
