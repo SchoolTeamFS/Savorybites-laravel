@@ -29,9 +29,11 @@ Route::middleware('auth')->group(function () {
 });
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\CategoryController;
+Route::get('/categories',[CategoryController::class,'index'])->name('recipes.listcateg');
 
 Route::get('/{category}/{title}', [RecipeController::class, 'show'])->name('recipe.show');
 Route::get('/{category}', [CategoryController::class, 'showCategory'])->name('recipes.categ');
+
 // Route::get('/recipe/{id}', [RecipeController::class, 'show']);
 // Route::get('/recette/{id}', [RecipeController::class, 'show'])->name('recipes.show');
 

@@ -13,9 +13,12 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        if (!$categories) {
+            abort(404, 'Catégorie non trouvée');
+        };
+        return view('recipes.listcateg', ['categories'=>$categories]);
     }
-
     /**
      * Show the form for creating a new resource.
      */

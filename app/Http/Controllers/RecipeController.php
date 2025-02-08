@@ -55,34 +55,9 @@ class RecipeController extends Controller
     /**
      * Display the specified resource.
      */
-//     public function show($categ, $title)
-// {
-//     // Trouver la catégorie
-//     $category = Category::whereRaw("LOWER(REPLACE(name, ' ', '-')) = ?", [strtolower($categ)])->firstOrFail();
 
-//     // Trouver la recette
-//     $recipe = Recipe::where('category_id', $category->id)
-//         ->whereRaw("LOWER(REPLACE(recipeTitle, ' ', '-')) = ?", [strtolower($title)])
-//         ->firstOrFail();
 
-//     return view('recipes.chemin', compact('category', 'recipe'));
-// }
 
-// public function show($id)
-// {
-//     // Charger la recette avec toutes ses relations
-//     $recipe = Recipe::with([
-//         'category', 
-//         'ingredients', 
-//         'preparationSteps', 
-//         'ratings', 
-//         'favorites', 
-//         'comments'
-//     ])->findOrFail($id);
-
-//     // Retourner la vue avec la recette et ses informations
-//     return view('recipe.show', compact('recipe'));
-// }
 
 
     /**

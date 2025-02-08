@@ -8,7 +8,8 @@
 <body>
     <h1>{{ $recipe->recipeTitle }}</h1>
     <h3>{{$recipe->description}}</h3>
-
+    <img src={{$recipe->picture}}>
+    <h4>{{$recipe->created_at}}</h4>
     <h2>Ingrédients</h2>
     <ul>
         @foreach($ingredients as $ingredient)
