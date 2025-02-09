@@ -43,7 +43,7 @@ class RecipeController extends Controller
         $preparationSteps = $recipe->preparationSteps;
         $comments = $recipe->comments;
         $ratings = $recipe->ratings;
-        return view('recipes.show', compact('recipe', 'ingredients', 'preparationSteps', 'comments', 'ratings', 'category'));
+        return view('recipes.detailsrec', compact('recipe', 'ingredients', 'preparationSteps', 'comments', 'ratings', 'category'));
     }
     
     

@@ -1,7 +1,6 @@
 @extends('recipes.app')
 @section('content')
 
-    {{-- Affichage du chemin --}}
     <nav>
         <p>
             <a href="{{ url('/categories') }}">Categories</a> 
