@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use App\Models\Recipe;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -13,12 +12,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-        if (!$categories) {
-            abort(404, 'Catégorie non trouvée');
-        };
-        return view('recipes.listcateg', ['categories'=>$categories]);
+        //
     }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -38,19 +34,10 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function showCategory($categorySlug)
+    public function show(Category $category)
     {
-        $categoryName = str_replace('-', ' ', $categorySlug);
-        $category = Category::where('name', $categoryName)->first();
-        if (!$category) {
-            abort(404, 'Catégorie non trouvée');
-        }
-        $recipes = $category->recipes;
-        return view('recipes.categ', compact('recipes', 'category', 'categoryName'));
+        //
     }
-    
-    
-    
 
     /**
      * Show the form for editing the specified resource.
