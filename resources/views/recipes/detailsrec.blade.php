@@ -1,16 +1,35 @@
 @extends('recipes.app')
+
 @section('content')
+
+    <style>
+        nav p {
+            font-style: italic;
+            color: gray;
+            margin-left: 40px;
+        }
+
+        nav a {
+            color: gray;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            color: darkgray;
+        }
+    </style>
 
     <nav>
         <p>
             <a href="{{ url('/categories') }}">Categories</a> 
             @isset($category)
                 > <a href="{{ route('recipes.categ', ['category' => str_replace(' ', '-', $category->name)]) }}">
-                    {{ $category->name }}
+                    {{ strtoupper($category->name) }}
                 </a>
             @endisset
             @isset($recipe)
-                > {{ $recipe->recipeTitle }}
+                > {{ strtoupper($recipe->recipeTitle) }}
             @endisset
         </p>
     </nav>
@@ -27,7 +46,7 @@
         @endforeach
     </ul>
 
-    <h2>Preparations steps</h2>
+    <h2>Preparation steps</h2>
     <ol>
         @foreach($preparationSteps as $step)
             <li>{{ $step->step }}</li>
@@ -41,7 +60,7 @@
         @endforeach
     </ul>
 
-    <h2>Raiting</h2>
+    <h2>Rating</h2>
     <ul>
         @foreach($ratings as $rating)
             <li>{{ $rating->rating }} / 5</li>
