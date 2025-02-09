@@ -1,5 +1,4 @@
 @extends('recipes.app')
-
 @section('content')
 
     <style>
@@ -75,7 +74,7 @@
 
     <h1>{{ $recipe->recipeTitle }}</h1>
     <h3>{{ $recipe->description }}</h3>
-    <img src="{{ asset($recipe->picture) }}" alt="{{ $recipe->recipeTitle }}">
+    <img src="https://th.bing.com/th/id/OIP.ydNry8zoLz4BzraMRDhvXwHaF-?rs=1&pid=ImgDetMain" alt="{{ $recipe->recipeTitle }}">
     <h4>Publié le : {{ $recipe->created_at->format('d M Y') }}</h4>
     <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px; padding: 0 20px;">
     
@@ -165,9 +164,6 @@
         <p><strong>{{ $comment->utilisateur->username }}</strong>: {{ $comment->content }}</p>
     @endforeach
 
-    <h2>Raiting</h2>
-    @foreach($ratings as $rating)
-        <p>{{ $rating->rating }} / 5</p>
-    @endforeach
+   
 
 @endsection
