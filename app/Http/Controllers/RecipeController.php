@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Recipe;
-use App\Models\Category;
-
 use Illuminate\Http\Request;
 
 class RecipeController extends Controller
@@ -32,28 +30,14 @@ class RecipeController extends Controller
     {
         //
     }
-    public function show($category, $recipeTitle)
-    {
-        $categoryName = str_replace('-', ' ', $category);
-        $category = Category::where('name', $categoryName)->firstOrFail();
-        $recipe = Recipe::where('category_id', $category->id)
-                        ->where('recipeTitle', str_replace('-', ' ', $recipeTitle)) 
-                        ->firstOrFail();
-        $ingredients = $recipe->ingredients;
-        $preparationSteps = $recipe->preparationSteps;
-        $comments = $recipe->comments;
-        $ratings = $recipe->ratings;
-        return view('recipes.show', compact('recipe', 'ingredients', 'preparationSteps', 'comments', 'ratings', 'category'));
-    }
-    
-    
+
     /**
      * Display the specified resource.
      */
-
-
-
-
+    public function show(Recipe $recipe)
+    {
+        //
+    }
 
     /**
      * Show the form for editing the specified resource.
