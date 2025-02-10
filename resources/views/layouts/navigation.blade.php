@@ -9,7 +9,8 @@
                 </div>
 
                 <!-- Navigation Links -->
-                @if(isset($user) && $user->role_id === 1)                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-center">
+                @if(isset($user) && $user->utilisateur->role_id === 1)
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-center">
                         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                             {{ __('Dashboard') }}
                         </x-nav-link>
@@ -45,9 +46,9 @@
                     </x-dropdown>
                 </div>
 
-                @if(isset($user) && $user->role_id === 1    )                    
+                @if(isset($user) && $user->utilisateur->role_id === 2)                   
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-center">
-                        <x-nav-link :href="route('Favorites')" :active="request()->routeIs('Favorites')">
+                        <x-nav-link :href="route('favorite')" :active="request()->routeIs('favorite')">
                             {{ __('Favorites') }}
                         </x-nav-link>
                     </div>
