@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+require __DIR__.'/auth.php';
+// Route::get('/', [CategoryController::class, 'index'])->name('home');
 Route::get('/', function () {
     return view('layouts.home');
 })->name('home');
@@ -37,5 +38,3 @@ Route::get('/{category}', [CategoryController::class, 'showCategory'])->name('re
 
 // Route::get('/recipe/{id}', [RecipeController::class, 'show']);
 // Route::get('/recette/{id}', [RecipeController::class, 'show'])->name('recipes.show');
-
-require __DIR__.'/auth.php';
