@@ -27,5 +27,14 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\CategoryController;
+Route::get('/categories',[CategoryController::class,'index'])->name('recipes.listcateg');
+
+Route::get('/{category}/{title}', [RecipeController::class, 'show'])->name('recipe.show');
+Route::get('/{category}', [CategoryController::class, 'showCategory'])->name('recipes.categ');
+
+// Route::get('/recipe/{id}', [RecipeController::class, 'show']);
+// Route::get('/recette/{id}', [RecipeController::class, 'show'])->name('recipes.show');
 
 require __DIR__.'/auth.php';
