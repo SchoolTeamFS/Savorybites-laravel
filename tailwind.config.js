@@ -13,6 +13,7 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                brush: ["Brush Script MT", "Brush Script Std", "cursive"],
             },
         },
     },
