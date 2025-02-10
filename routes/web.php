@@ -38,3 +38,5 @@ Route::get('/{category}', [CategoryController::class, 'showCategory'])->name('re
 
 // Route::get('/recipe/{id}', [RecipeController::class, 'show']);
 // Route::get('/recette/{id}', [RecipeController::class, 'show'])->name('recipes.show');
+
+require __DIR__.'/auth.php';
