@@ -13,10 +13,13 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\CategoryController;
 
+// Route::get('/', [CategoryController::class, 'index'])->name('home');
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('layouts.home');
+})->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -27,5 +30,13 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/categories',[CategoryController::class,'index'])->name('recipes.listcateg');
+
+Route::get('/{category}/{title}', [RecipeController::class, 'show'])->name('recipe.show');
+Route::get('/{category}', [CategoryController::class, 'showCategory'])->name('recipes.categ');
+
+// Route::get('/recipe/{id}', [RecipeController::class, 'show']);
+// Route::get('/recette/{id}', [RecipeController::class, 'show'])->name('recipes.show');
 
 require __DIR__.'/auth.php';
