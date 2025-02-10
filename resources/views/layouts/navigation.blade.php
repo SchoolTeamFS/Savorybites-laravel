@@ -73,13 +73,13 @@
                 @else
                     <!-- If user is not logged in -->
                     <div class="mx-1">
-                        <a href="{{ route('login') }}" class="inline-flex items-center px-3 py-2 bg-gray-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none transition ease-in-out duration-150">
+                        <x-primary-button href="{{ route('login') }}" :active="request()->routeIs('login')">
                             {{ __('Log in') }}
-                        </a>
+                        </x-primary-button>
                     </div>
-                    <a href="{{ route('register') }}" class="inline-flex items-center px-3 py-2 bg-blue-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-900 focus:outline-none transition ease-in-out duration-150">
+                    <x-primary-button href="{{ route('register') }}" :active="request()->routeIs('register')">
                         {{ __('Sign up') }}
-                    </a>
+                    </x-primary-button>
                 @endif
             </div>
 

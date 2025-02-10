@@ -1,9 +1,9 @@
 <x-app-layout>
     <div class="flex justify-center items-center min-h-screen bg-gray-100">
         <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-            <div class="mb-4 text-sm text-gray-600">
-                {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
-            </div>
+            <h1 class="mb-4 text-[#B55D51] font-bold">
+                {{ __('Password Reset ') }}
+            </h1>
 
             <!-- Session Status -->
             <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -19,9 +19,9 @@
                 </div>
 
                 <div class="flex items-center justify-end mt-4">
-                    <x-primary-button>
+                    <x-secondary-button>
                         {{ __('Email Password Reset Link') }}
-                    </x-primary-button>
+                    </x-secondary-button>
                 </div>
             </form>
         </div>
