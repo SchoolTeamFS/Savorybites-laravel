@@ -9,7 +9,8 @@
                 </div>
 
                 <!-- Navigation Links -->
-                @if(isset($user) && $user->role_id === 1)                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-center">
+                @if(isset($user) && $user->utilisateur->role_id === 1)
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-center">
                         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                             {{ __('Dashboard') }}
                         </x-nav-link>
@@ -45,9 +46,9 @@
                     </x-dropdown>
                 </div>
 
-                @if(isset($user) && $user->role_id === 1    )                    
+                @if(isset($user) && $user->utilisateur->role_id === 2)                   
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-center">
-                        <x-nav-link :href="route('Favorites')" :active="request()->routeIs('Favorites')">
+                        <x-nav-link :href="route('favorite')" :active="request()->routeIs('favorite')">
                             {{ __('Favorites') }}
                         </x-nav-link>
                     </div>
@@ -73,13 +74,13 @@
                 @else
                     <!-- If user is not logged in -->
                     <div class="mx-1">
-                        <a href="{{ route('login') }}" class="inline-flex items-center px-3 py-2 bg-gray-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none transition ease-in-out duration-150">
+                        <x-primary-button href="{{ route('login') }}" :active="request()->routeIs('login')">
                             {{ __('Log in') }}
-                        </a>
+                        </x-primary-button>
                     </div>
-                    <a href="{{ route('register') }}" class="inline-flex items-center px-3 py-2 bg-blue-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-900 focus:outline-none transition ease-in-out duration-150">
+                    <x-primary-button href="{{ route('register') }}" :active="request()->routeIs('register')">
                         {{ __('Sign up') }}
-                    </a>
+                    </x-primary-button>
                 @endif
             </div>
 
