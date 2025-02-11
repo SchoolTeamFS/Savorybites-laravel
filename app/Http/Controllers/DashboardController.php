@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Utilisateur;
+use App\Models\Comment;
+use App\Models\Recipe;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,19 +18,29 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        // Vérifier si l'utilisateur est connecté
-        if (!Auth::check()) {
-            return redirect()->route('login')->with('error', 'Veuillez vous connecter.');
-        }
-
-        // Récupérer l'utilisateur connecté avec son profil 'Utilisateur' et son rôle
-        $user = Auth::user()->utilisateur()->first();
-        // Si aucun profil Utilisateur n'est trouvé, retourner une erreur 403
-        if (!$user) {
-            abort(403, 'Accès refusé. Profil utilisateur non trouvé.');
-        }
-
-        // Passer l'utilisateur à la vue du tableau de bord
-        return view('layouts.navigation', compact('user'));
+        $user = Auth::user();
+        $users = User::all();
+        $recipes = Recipe::all();
+        $totalUsers = $users->count();
+        
+        // Fetch all comments
+        $comments = Comment::all();
+        $totalComments = $comments->count();
+    
+        // Count comments per user
+        $userCommentCounts = $comments->groupBy('user_id')->map->count();
+        
+        // Get top active users
+        $TopActiveUsers = $users->filter(fn ($user) => isset($userCommentCounts[$user->id]))
+            ->map(fn ($user) => [
+                'username' => $user->name,
+                'email' => $user->email,
+                'commentCount' => $userCommentCounts[$user->id] ?? 0
+            ])
+            ->sortByDesc('commentCount')
+            ->take(10);
+    
+        return view('dashboard', compact('user', 'totalUsers', 'totalComments', 'TopActiveUsers'));
     }
+    
 }
