@@ -1,7 +1,7 @@
 <x-app-layout>
 <nav>
     <p>
-        <a href="{{ url('/categories') }}">Categories</a> 
+        <a href="{{ url('/') }}">Categories</a> 
         @isset($category)
             > <a href="{{ route('recipes.categ', ['category' => str_replace(' ', '-', $category->name)]) }}">
                 {{ $category->name }}
@@ -10,7 +10,7 @@
 
     </p>
 </nav>
-    <h1>categ:{{ $categoryName }}</h1>
+    <h1>Category:{{ $categoryName }}</h1>
 
     <ul>
         @foreach($recipes as $recipe)
