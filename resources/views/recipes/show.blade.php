@@ -1,10 +1,9 @@
-@extends('recipes.app')
-@section('content')
+<x-app-layout>
 
     {{-- Affichage du chemin --}}
     <nav>
         <p>
-            <a href="{{ url('/categories') }}">Categories</a> 
+            <a href="{{ url('/') }}">Categories</a> 
             @isset($category)
                 > <a href="{{ route('recipes.categ', ['category' => str_replace(' ', '-', $category->name)]) }}">
                     {{ $category->name }}
@@ -49,4 +48,4 @@
         @endforeach
     </ul>
 
-@endsection
+</x-app-layout>
