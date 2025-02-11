@@ -26,10 +26,8 @@ class AppServiceProvider extends ServiceProvider
             // Récupérer les catégories
             $categories = Category::all();
 
-            // Récupérer l'utilisateur connecté avec son rôle (si connecté)
             $user = Auth::check() ? Auth::user()->load('utilisateur.role') : null;
 
-            // Passer les variables à la vue
             $view->with([
                 'categories' => $categories,
                 'user' => $user

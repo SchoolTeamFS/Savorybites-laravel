@@ -38,7 +38,7 @@
 
                         <x-slot name="content">
                             @foreach($categories as $category)
-                                <x-dropdown-link :href="route('recipes.categ', $category)">
+                                <x-dropdown-link :href="route('recipes.categ', str_replace(' ', '-', $category->name))">
                                     {{ $category->name }}
                                 </x-dropdown-link>
                             @endforeach
