@@ -8,6 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Utilisateur extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'user_id',
+        'username',
+        'image',
+        'bio',
+        'joined_date',
+        'role_id', 
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -22,7 +31,10 @@ class Utilisateur extends Model
     {
         return $this->hasMany(Favorite::class);
     }
-
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
     public function comments()
     {
         return $this->hasMany(Comment::class);
