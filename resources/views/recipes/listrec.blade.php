@@ -1,4 +1,4 @@
-@extends('recipes.app')
+<x-app-layout>
 
 @section('content')
     <style>
@@ -42,3 +42,4 @@
         @endforeach
     </ul>
 @endsection
+</x-app-layout>

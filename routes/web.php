@@ -32,8 +32,6 @@ Route::get('/dashboard', function () {
 // // Route::get('/{category}/{title}', [RecipeController::class, 'show'])->name('recipe.show');
 // // Route::get('/{category}', [CategoryController::class, 'showCategory'])->name('recipes.categ');
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\RecipeController;
-use App\Http\Controllers\CategoryController;
 
 // Routes d'authentification
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');

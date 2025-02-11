@@ -1,5 +1,5 @@
-@extends('recipes.app')
-@section('nav')
+<x-app-layout>
+    @section('nav')
 @section('content')
 
     <style>
@@ -167,3 +167,4 @@
    
 
 @endsection
+</x-app-layout>
