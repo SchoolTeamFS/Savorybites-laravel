@@ -1,24 +1,6 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-<<<<<<< HEAD
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\RecipeController;
-use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-require __DIR__.'/auth.php';
-// Route::get('/', [CategoryController::class, 'index'])->name('home');
-=======
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FavoriteController;
@@ -29,7 +11,6 @@ require __DIR__.'/auth.php';
 
 
 // Home page route
->>>>>>> ef0985d543b265e8acc73ad1aea278686bbdfd76
 Route::get('/', function () {
     return view('layouts.home');
 })->name('home');
