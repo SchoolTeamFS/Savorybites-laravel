@@ -9,7 +9,7 @@
                 </div>
 
                 <!-- Navigation Links -->
-                @if(isset($utilisateur) && $utilisateur->role_id === 1)
+                @if(isset($user) && $user->utilisateur->role_id === 1)
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-center">
                         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                             {{ __('Dashboard') }}
@@ -38,7 +38,7 @@
 
                         <x-slot name="content">
                             @foreach($categories as $category)
-                                <x-dropdown-link :href="route('recipes.categ', $category)">
+                                <x-dropdown-link :href="route('recipes.categ', str_replace(' ', '-', $category->name))">
                                     {{ $category->name }}
                                 </x-dropdown-link>
                             @endforeach
@@ -46,16 +46,15 @@
                     </x-dropdown>
                 </div>
 
-                @if(isset($utilisateur) && $utilisateur->role_id === 2)
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-center">
-                        <x-nav-link :href="route('Favorites')" :active="request()->routeIs('Favorites')">
+                @if(isset($user) && $user->utilisateur->role_id === 2)                   
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-center">
+                        <x-nav-link :href="route('favorite')" :active="request()->routeIs('favorite')">
                             {{ __('Favorites') }}
                         </x-nav-link>
                     </div>
                 @endif
 
-                @if(isset($utilisateur))
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-center">
+                @if(isset($user))                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-center">
                         <x-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
                             {{ __('Profil') }}
                         </x-nav-link>
@@ -75,22 +74,13 @@
                 @else
                     <!-- If user is not logged in -->
                     <div class="mx-1">
-                        <a href="{{ route('login') }}" class="inline-flex items-center px-3 py-2 bg-gray-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none transition ease-in-out duration-150">
+                        <x-primary-button href="{{ route('login') }}" :active="request()->routeIs('login')">
                             {{ __('Log in') }}
-                        </a>
+                        </x-primary-button>
                     </div>
-                    <a href="{{ route('register') }}" class="inline-flex items-center px-3 py-2 bg-blue-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-900 focus:outline-none transition ease-in-out duration-150">
+                    <x-primary-button href="{{ route('register') }}" :active="request()->routeIs('register')">
                         {{ __('Sign up') }}
-                    </a>
-                @endif
-
-                <!-- Bouton de lien vers le Dashboard pour les administrateurs uniquement -->
-                @if(Auth::check() && optional(Auth::user()->utilisateur)->role_id === 1)
-                    <div class="mx-1">
-                        <a href="{{ route('dashboard') }}" class="inline-flex items-center px-3 py-2 bg-green-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-700 focus:bg-green-700 active:bg-green-900 focus:outline-none transition ease-in-out duration-150">
-                            {{ __('Dashboard') }}
-                        </a>
-                    </div>
+                    </x-primary-button>
                 @endif
             </div>
 
@@ -109,11 +99,9 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            @if(isset($utilisateur) && $utilisateur->role_id === 1)
-                <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                    {{ __('Dashboard') }}
-                </x-responsive-nav-link>
-            @endif
+            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                {{ __('Dashboard') }}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
