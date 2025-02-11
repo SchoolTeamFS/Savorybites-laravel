@@ -1,5 +1,4 @@
-@extends('recipes.app')
-@section('content')
+<x-app-layout>
 <nav>
     <p>
         <a href="{{ url('/categories') }}">Categories</a> 
@@ -22,4 +21,4 @@
             </li>
         @endforeach
     </ul>
-@endsection
+</x-app-layout>

@@ -15,16 +15,13 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+        @include('layouts.navigation')
+        <div class="min-h-screen bg-gray-100 pt-20">
 
 
             <!-- Page Content -->
             <div>
                 {{ $slot }}
-            </div>
-            <div>
-                @yield('content')
             </div>
         </div>
     </body>
