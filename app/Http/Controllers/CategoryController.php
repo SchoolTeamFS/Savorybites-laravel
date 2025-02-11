@@ -46,7 +46,7 @@ class CategoryController extends Controller
             abort(404, 'Catégorie non trouvée');
         }
         $recipes = $category->recipes;
-        return view('recipes.categ', compact('recipes', 'category', 'categoryName'));
+        return view('recipes.listrec', compact('recipes', 'category', 'categoryName'));
     }
     
     
