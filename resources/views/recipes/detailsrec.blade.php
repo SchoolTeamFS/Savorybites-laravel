@@ -1,4 +1,5 @@
 @extends('recipes.app')
+@section('nav')
 @section('content')
 
     <style>
@@ -80,7 +81,7 @@
     
         <div style="color: #B55D51; display: flex; align-items: center; gap: 8px;">
             <i class="fas fa-user"></i>
-            <span>{{ $recipe->author }}</span>
+            <span>{{ $admin->username }}</span>
         </div>
     
         <div style="color: #B55D51; display: flex; align-items: center; gap: 8px;">
@@ -119,7 +120,6 @@
             @endfor
         </div>
     </div>
-    
     <div class="ingredients-container">
         <h2>Ingrédients</h2>
         @foreach($ingredients as $ingredient)

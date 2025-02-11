@@ -22,17 +22,38 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
+// // use App\Http\Controllers\RecipeController;
+// // use App\Http\Controllers\CategoryController;
+// // Route::get('/categories',[CategoryController::class,'index'])->name('recipes.listcateg');
+
+// // Route::get('/{category}/{title}', [RecipeController::class, 'show'])->name('recipe.show');
+// // Route::get('/{category}', [CategoryController::class, 'showCategory'])->name('recipes.categ');
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\CategoryController;
+
+// Routes d'authentification
+Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
+Route::post('/login', [AuthenticatedSessionController::class, 'store']);
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+
+// Routes protégées par l'authentification
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-use App\Http\Controllers\RecipeController;
-use App\Http\Controllers\CategoryController;
-Route::get('/categories',[CategoryController::class,'index'])->name('recipes.listcateg');
 
+// Routes des recettes et des catégories
+Route::get('/categories', [CategoryController::class, 'index'])->name('recipes.listcateg');
 Route::get('/{category}/{title}', [RecipeController::class, 'show'])->name('recipe.show');
 Route::get('/{category}', [CategoryController::class, 'showCategory'])->name('recipes.categ');
+
 
 // Route::get('/recipe/{id}', [RecipeController::class, 'show']);
 // Route::get('/recette/{id}', [RecipeController::class, 'show'])->name('recipes.show');

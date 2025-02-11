@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Recipe;
 use App\Models\Category;
+use App\Models\Utilisateur;
 
 use Illuminate\Http\Request;
 
@@ -32,8 +33,13 @@ class RecipeController extends Controller
     {
         //
     }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function show($category, $recipeTitle)
     {
+        
         $categoryName = str_replace('-', ' ', $category);
         $category = Category::where('name', $categoryName)->firstOrFail();
         $recipe = Recipe::where('category_id', $category->id)
@@ -43,7 +49,8 @@ class RecipeController extends Controller
         $preparationSteps = $recipe->preparationSteps;
         $comments = $recipe->comments;
         $ratings = $recipe->ratings;
-        return view('recipes.detailsrec', compact('recipe', 'ingredients', 'preparationSteps', 'comments', 'ratings', 'category'));
+        $admin=Utilisateur::where('role_id',1)->first();
+        return view('recipes.detailsrec', compact('recipe', 'ingredients', 'preparationSteps', 'comments', 'ratings', 'category','admin'));
     }
     
     
