@@ -17,8 +17,8 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
+        @include('layouts.navigation')
         <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
             <div>
                 {{ $slot }}
             </div>
@@ -28,6 +28,14 @@
             </div>
             <div>
                 @yield('content') <!-- Cette ligne injectera la section content ici -->
+            </div>
+        @include('layouts.navigation')
+        <div class="min-h-screen bg-gray-100 pt-20">
+
+
+            <!-- Page Content -->
+            <div>
+                {{ $slot }}
             </div>
         </div>
     </body>

@@ -8,12 +8,14 @@ use Illuminate\View\View;
 
 class NavigationController extends Controller
 {
-    public function index(): View
+    public function index()
     {
         $categories = Category::all();
         $user = Auth::user();
 
-        return view('layouts.navigation', compact('categories', 'user'));
+        // return $categories;
+        return view('layouts.navigation', ['user' => $user, 'categories' =>$categories]);
+        return view('layouts.navigation')->with('categories')->with('user');
     }
 }
 
