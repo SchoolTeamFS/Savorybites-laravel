@@ -10,11 +10,25 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
+        @include('layouts.navigation')
+        <div class="min-h-screen bg-gray-100">
+            <div>
+                {{ $slot }}
+            </div>
+            <!-- Page Content -->
+            <div>
+                @yield('test') <!-- Cette ligne injectera la section test ici -->
+            </div>
+            <div>
+                @yield('content') <!-- Cette ligne injectera la section content ici -->
+            </div>
         @include('layouts.navigation')
         <div class="min-h-screen bg-gray-100 pt-20">
 
