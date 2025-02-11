@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Utilisateur;
@@ -21,13 +20,18 @@ class DashboardController extends Controller
         }
 
         // Récupérer l'utilisateur connecté avec son profil 'Utilisateur' et son rôle
-        $user = Auth::user()->utilisateur()->first();
+        $utilisateur = Auth::user()->utilisateur;
+
         // Si aucun profil Utilisateur n'est trouvé, retourner une erreur 403
-        if (!$user) {
+        if (!$utilisateur) {
             abort(403, 'Accès refusé. Profil utilisateur non trouvé.');
         }
 
-        // Passer l'utilisateur à la vue du tableau de bord
-        return view('layouts.navigation', compact('user'));
+        // Vérifier si l'utilisateur est admin (role_id === 1)
+        $isAdmin = $utilisateur->role_id === 1;
+
+        // Passer l'utilisateur et le statut d'admin à la vue du tableau de bord
+        return view('dashboard', compact('utilisateur', 'isAdmin'));
     }
 }
+
