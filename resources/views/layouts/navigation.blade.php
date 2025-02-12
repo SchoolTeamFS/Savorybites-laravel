@@ -54,7 +54,8 @@
                     </div>
                 @endif
 
-                @if(isset($user))                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-center">
+                @if(isset($user))                    
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-center">
                         <x-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
                             {{ __('Profil') }}
                         </x-nav-link>
