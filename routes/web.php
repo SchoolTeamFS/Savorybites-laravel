@@ -48,10 +48,3 @@ Route::get('/{category}/{title}', [RecipeController::class, 'show'])->name('reci
 
 // Category detail route (e.g., list all recipes within a category)
 Route::get('/{category}', [CategoryController::class, 'showCategory'])->name('recipes.categ');
-<<<<<<< HEAD
-
-=======
-use App\Http\Controllers\CommentController;
-
-Route::post('/recipe/{recipe}/comment', [CommentController::class, 'store'])->name('comments.store');
->>>>>>> c68de3db6f1a75d6143039f75c1d90e840d5befd%
