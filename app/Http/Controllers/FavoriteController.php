@@ -12,7 +12,8 @@ class FavoriteController extends Controller
      */
     public function index()
     {
-        //
+        $fav = Favorite::with(['recipe', 'utilisateur'])->get();
+        return (view('layouts.favorite', compact('fav')));
     }
 
     /**

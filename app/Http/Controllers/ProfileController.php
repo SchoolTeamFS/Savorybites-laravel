@@ -26,16 +26,40 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $user = $request->user();
+        $user->fill($request->validated());
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        if ($user->isDirty('email')) {
+            $user->email_verified_at = null;
         }
 
-        $request->user()->save();
+        // Save changes to the User model
+        $user->save();
+
+        // Update the related Utilisateur model if necessary
+        if ($user->utilisateur) {
+            $user->utilisateur->update([
+                'username' => $request->input('username') ?? $user->utilisateur->username,
+                'bio' => $request->input('bio') ?? $user->utilisateur->bio,
+                'image' => $this->handleImageUpload($request) ?? $user->utilisateur->image,
+            ]);
+        }
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
+
+    // Handle image upload
+    protected function handleImageUpload($request)
+    {
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('profile_images', 'public');
+            return $path;
+        }
+
+        return null;
+    }
+
+    
 
     /**
      * Delete the user's account.
@@ -50,6 +74,10 @@ class ProfileController extends Controller
 
         Auth::logout();
 
+        if ($user->utilisateur) {
+            $user->utilisateur->delete();
+        }
+
         $user->delete();
 
         $request->session()->invalidate();
@@ -57,4 +85,5 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ManagerController;
 use Illuminate\Support\Facades\Route;
 
 // Include the auth routes provided by Laravel Breeze or your auth scaffolding.
@@ -29,6 +30,11 @@ Route::middleware('auth')->group(function () {
 
     // Favorites Route (Note: Using GET for favorites display)
     Route::get('/favorite', [FavoriteController::class, 'index'])->name('favorite');
+    
+    Route::get('/manage-users', [ManagerController::class, 'index'])->name('manage-users');
+    Route::get('/update-user/{id}', [ManagerController::class, 'edit'])->name('manage-user.edit');
+    Route::patch('/update-user/{id}', [ManagerController::class, 'update'])->name('manage-user.update');
+    Route::delete('/update-user/{id}', [ManagerController::class, 'destroy'])->name('manage-user.destroy');
 });
 
 // Category listing route
