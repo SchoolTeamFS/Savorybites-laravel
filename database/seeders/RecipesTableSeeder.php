@@ -15,6 +15,7 @@ class RecipesTableSeeder extends Seeder
                 'recipeTitle' => 'Classic Beef Burger',
                 'description' => 'A juicy beef burger with cheese, lettuce, and tomato.',
                 'category_id' => 1,
+                'utilisateur_id'=>1,
                 'picture' => 'imagesRecepies/Normal/classic_beef_burger.jpg',
                 'ingredients' => [
                     '500g ground beef',
@@ -39,511 +40,513 @@ class RecipesTableSeeder extends Seeder
             ],
             [
                 'id' => 2,
-                'recipeTitle' => 'Chicken Caesar Salad',
-                'description' => 'A classic salad with grilled chicken, romaine lettuce, croutons, and Caesar dressing.',
-                'category_id' => 4,
-                'picture' => 'imagesRecepies/Normal/chicken_caesar_salad.jpg',
+                'recipeTitle' => 'Mac and Cheese',
+                'description' => 'Creamy and cheesy macaroni pasta.',
+                'category_id' => 1,
+                'utilisateur_id'=>1,
+                'picture' => 'imagesRecepies/Normal/mac_and_cheese.jpg',
                 'ingredients' => [
-                    '2 chicken breasts',
-                    '1 head of romaine lettuce',
-                    '1/2 cup Caesar dressing',
-                    '1/4 cup grated Parmesan cheese',
-                    '1 cup croutons',
+                    '300g elbow macaroni',
+                    '2 cups shredded cheddar cheese',
+                    '2 cups milk',
+                    '2 tablespoons butter',
+                    '2 tablespoons flour',
                     'Salt and pepper'
                 ],
                 'preparationSteps' => [
-                    'Season the chicken breasts with salt and pepper.',
-                    'Grill the chicken until fully cooked and then slice it.',
-                    'Chop the romaine lettuce and place it in a large salad bowl.',
-                    'Add the grilled chicken slices, Caesar dressing, grated Parmesan cheese, and croutons.',
-                    'Toss the salad to combine all the ingredients.',
-                    'Serve immediately.'
+                    'Cook the macaroni according to package instructions and drain.',
+                    'In a saucepan, melt the butter over medium heat.',
+                    'Stir in the flour and cook for 1-2 minutes.',
+                    'Gradually whisk in the milk and cook until the sauce thickens.',
+                    'Add the shredded cheddar cheese and stir until melted.',
+                    'Season with salt and pepper to taste.',
+                    'Combine the cheese sauce with the cooked macaroni.',
+                    'Serve hot.'
                 ]
             ],
             [
                 'id' => 3,
-                'recipeTitle' => 'Spaghetti Carbonara',
-                'description' => 'A classic Italian pasta dish with eggs, cheese, pancetta, and pepper.',
+                'recipeTitle' => 'Pepperoni Pizza',
+                'description' => 'A classic pizza topped with pepperoni and mozzarella cheese.',
                 'category_id' => 1,
-                'picture' => 'imagesRecepies/Normal/spaghetti_carbonara.jpg',
+                'utilisateur_id'=>1,
+                'picture' => 'imagesRecepies/Normal/pepperoni_pizza.jpg',
                 'ingredients' => [
-                    '400g spaghetti',
-                    '150g pancetta',
-                    '2 large eggs',
-                    '100g grated Parmesan cheese',
-                    '2 cloves garlic',
-                    'Salt and pepper'
+                    '1 pizza dough',
+                    '1 cup tomato sauce',
+                    '2 cups shredded mozzarella cheese',
+                    '20 slices pepperoni',
+                    '1 teaspoon oregano'
                 ],
                 'preparationSteps' => [
-                    'Cook the spaghetti according to package instructions.',
-                    'In a separate pan, cook the pancetta until crispy.',
-                    'Beat the eggs in a bowl and add the grated Parmesan cheese.',
-                    'Drain the spaghetti and add it to the pan with the pancetta.',
-                    'Remove the pan from heat and quickly mix in the egg and cheese mixture.',
-                    'Add minced garlic, salt, and pepper to taste.',
-                    'Serve immediately.'
+                    'Preheat the oven to 220°C (425°F).',
+                    'Roll out the pizza dough on a baking sheet.',
+                    'Spread the tomato sauce over the dough.',
+                    'Sprinkle the shredded mozzarella cheese on top.',
+                    'Arrange the pepperoni slices over the cheese.',
+                    'Sprinkle oregano on top.',
+                    'Bake for 15-20 minutes until the crust is golden and the cheese is bubbly.',
+                    'Serve hot.'
                 ]
             ],
             [
                 'id' => 4,
-                'recipeTitle' => 'Vegetable Stir-Fry',
-                'description' => 'A quick and healthy stir-fry with mixed vegetables and a savory sauce.',
+                'recipeTitle' => 'Fried Chicken',
+                'description' => 'Crispy fried chicken with a golden crust.',
                 'category_id' => 1,
-                'picture' => 'imagesRecepies/Normal/vegetable_stir_fry.jpg',
+                'utilisateur_id'=>1,
+                'picture' => 'imagesRecepies/Normal/fried_chicken.jpg',
                 'ingredients' => [
-                    '1 bell pepper',
-                    '1 carrot',
-                    '1 broccoli',
-                    '100g snap peas',
-                    '2 tbsp soy sauce',
-                    '1 tbsp olive oil',
-                    '2 cloves garlic',
-                    '1 tsp ginger',
-                    'Salt and pepper'
+                    '8 pieces of chicken (legs, thighs, breasts)',
+                    '2 cups buttermilk',
+                    '2 cups flour',
+                    '1 teaspoon paprika',
+                    '1 teaspoon garlic powder',
+                    '1 teaspoon salt',
+                    '1 teaspoon black pepper',
+                    'Vegetable oil for frying'
                 ],
                 'preparationSteps' => [
-                    'Chop all the vegetables into bite-sized pieces.',
-                    'Heat the olive oil in a large pan or wok over medium-high heat.',
-                    'Add the garlic and ginger and stir-fry for about 1 minute.',
-                    'Add the chopped vegetables and stir-fry until they are tender but still crisp.',
-                    'Add the soy sauce, salt, and pepper to taste.',
-                    'Serve immediately.'
+                    'Soak the chicken pieces in buttermilk for at least 1 hour.',
+                    'In a large bowl, combine flour, paprika, garlic powder, salt, and black pepper.',
+                    'Heat vegetable oil in a deep pan or fryer to 175°C (350°F).',
+                    'Dredge the soaked chicken pieces in the flour mixture.',
+                    'Fry the chicken pieces in batches until golden brown and cooked through, about 10-15 minutes per batch.',
+                    'Drain on paper towels and serve hot.'
                 ]
             ],
             [
                 'id' => 5,
-                'recipeTitle' => 'Chocolate Chip Cookies',
-                'description' => 'Classic chocolate chip cookies that are crispy on the outside and chewy on the inside.',
-                'category_id' => 7,
-                'picture' => 'imagesRecepies/Normal/chocolate_chip_cookies.jpg',
+                'recipeTitle' => 'Spaghetti Carbonara',
+                'description' => 'Classic Italian pasta with eggs, cheese, and pancetta.',
+                'category_id' => 1,
+                'utilisateur_id'=>1,
+                'picture' => 'imagesRecepies/Normal/spaghetti_carbonara.jpg',
                 'ingredients' => [
-                    '2 1/4 cups all-purpose flour',
-                    '1/2 tsp baking soda',
-                    '1 cup unsalted butter, room temperature',
-                    '1/2 cup granulated sugar',
-                    '1 cup packed light-brown sugar',
-                    '1 tsp salt',
-                    '2 tsp pure vanilla extract',
-                    '2 large eggs',
-                    '2 cups semisweet and/or milk chocolate chips'
+                    '200g spaghetti',
+                    '100g pancetta',
+                    '2 eggs',
+                    '1 cup grated Parmesan cheese',
+                    '2 garlic cloves',
+                    'Salt and pepper',
+                    'Parsley for garnish'
                 ],
                 'preparationSteps' => [
-                    'Preheat the oven to 350°F (175°C).',
-                    'In a small bowl, whisk together the flour and baking soda.',
-                    'In a large bowl, combine the butter, granulated sugar, and brown sugar.',
-                    'Add the salt, vanilla extract, and eggs, one at a time, mixing well after each addition.',
-                    'Gradually add the flour mixture, mixing until just combined.',
-                    'Stir in the chocolate chips.',
-                    'Drop dough by rounded tablespoons onto baking sheets.',
-                    'Bake until cookies are golden around the edges but still soft in the center, about 10-12 minutes.',
-                    'Let cool on baking sheets for 2 minutes before transferring to wire racks to cool completely.'
+                    'Cook the spaghetti according to package instructions and drain, reserving some pasta water.',
+                    'In a large pan, cook the pancetta over medium heat until crispy.',
+                    'Add minced garlic and cook for 1 minute.',
+                    'In a bowl, whisk together eggs and grated Parmesan cheese.',
+                    'Add the cooked spaghetti to the pan with the pancetta.',
+                    'Remove the pan from heat and quickly stir in the egg and cheese mixture, adding pasta water as needed to create a creamy sauce.',
+                    'Season with salt and pepper.',
+                    'Garnish with parsley and serve immediately.'
                 ]
             ],
             [
-                    'id' => 6,
-                    'recipeTitle' => 'Mushroom Risotto',
-                    'description' => 'A creamy risotto with sautéed mushrooms and Parmesan cheese.',
-                    'category_id' => 1,
-                    'picture' => 'imagesRecepies/Normal/mushroom_risotto.jpg',
-                    'ingredients' => [
-                        '1 cup Arborio rice',
-                        '2 cups chicken broth',
-                        '1 cup white wine',
-                        '200g mushrooms, sliced',
-                        '1 onion, chopped',
-                        '2 cloves garlic, minced',
-                        '1/2 cup grated Parmesan cheese',
-                        '2 tbsp olive oil',
-                        'Salt and pepper'
-                    ],
-                    'preparationSteps' => [
-                        'Heat the olive oil in a large pan over medium heat.',
-                        'Add the chopped onion and garlic, and sauté until translucent.',
-                        'Add the sliced mushrooms and cook until they release their moisture and start to brown.',
-                        'Add the Arborio rice and stir to coat with the oil and mushrooms.',
-                        'Pour in the white wine and cook until it is mostly absorbed by the rice.',
-                        'Gradually add the chicken broth, one cup at a time, stirring frequently until the rice is creamy and tender.',
-                        'Stir in the grated Parmesan cheese and season with salt and pepper.',
-                        'Serve immediately.'
-                    ]
-            ],
-            [
-                    'id' => 7,
-                    'recipeTitle' => 'Grilled Salmon with Lemon Butter',
-                    'description' => 'A simple and delicious grilled salmon with a lemon butter sauce.',
-                    'category_id' => 1,
-                    'picture' => 'imagesRecepies/Normal/grilled_salmon_lemon_butter.jpg',
-                    'ingredients' => [
-                        '4 salmon fillets',
-                        '1 lemon, sliced',
-                        '4 tbsp unsalted butter',
-                        '2 cloves garlic, minced',
-                        'Salt and pepper',
-                        '2 tbsp fresh parsley, chopped'
-                    ],
-                    'preparationSteps' => [
-                        'Preheat the grill to medium-high heat.',
-                        'Season the salmon fillets with salt and pepper.',
-                        'Grill the salmon fillets for about 4-5 minutes on each side, until fully cooked.',
-                        'In a small saucepan, melt the butter over medium heat.',
-                        'Add the minced garlic and cook until fragrant.',
-                        'Stir in the lemon slices and fresh parsley.',
-                        'Pour the lemon butter sauce over the grilled salmon fillets.',
-                        'Serve immediately.'
-                    ]
-            ],
-            [
-                    'id' => 8,
-                    'recipeTitle' => 'Stuffed Bell Peppers',
-                    'description' => 'Bell peppers stuffed with a mixture of ground beef, rice, and tomato sauce.',
-                    'category_id' => 1,
-                    'picture' => 'imagesRecepies/Normal/stuffed_bell_peppers.jpg',
-                    'ingredients' => [
-                        '4 bell peppers',
-                        '500g ground beef',
-                        '1 cup cooked rice',
-                        '1 can tomato sauce',
-                        '1 onion, chopped',
-                        '2 cloves garlic, minced',
-                        '1 cup shredded cheese',
-                        'Salt and pepper',
-                        '1 tsp Italian seasoning'
-                    ],
-                    'preparationSteps' => [
-                        'Preheat the oven to 375°F (190°C).',
-                        'Cut the tops off the bell peppers and remove the seeds and membranes.',
-                        'In a large pan, cook the ground beef, chopped onion, and minced garlic until the beef is browned.',
-                        'Stir in the cooked rice, tomato sauce, salt, pepper, and Italian seasoning.',
-                        'Stuff the bell peppers with the beef and rice mixture.',
-                        'Place the stuffed bell peppers in a baking dish and top with shredded cheese.',
-                        'Cover the dish with aluminum foil and bake for 25-30 minutes.',
-                        'Remove the foil and bake for an additional 10 minutes until the cheese is melted and bubbly.',
-                        'Serve immediately.'
-                    ]
-            ],
-            [
-                    'id' => 9,
-                    'recipeTitle' => 'Blueberry Pancakes',
-                    'description' => 'Fluffy pancakes loaded with fresh blueberries and topped with maple syrup.',
-                    'category_id' => 7,
-                    'picture' => 'imagesRecepies/Normal/blueberry_pancakes.jpg',
-                    'ingredients' => [
-                        '1 cup all-purpose flour',
-                        '2 tbsp sugar',
-                        '1 tsp baking powder',
-                        '1/2 tsp baking soda',
-                        '1/4 tsp salt',
-                        '1 cup buttermilk',
-                        '1 egg',
-                        '2 tbsp melted butter',
-                        '1 cup fresh blueberries',
-                        'Maple syrup'
-                    ],
-                    'preparationSteps' => [
-                        'In a large bowl, whisk together the flour, sugar, baking powder, baking soda, and salt.',
-                        'In a separate bowl, whisk together the buttermilk, egg, and melted butter.',
-                        'Pour the wet ingredients into the dry ingredients and stir until just combined.',
-                        'Fold in the fresh blueberries.',
-                        'Heat a non-stick skillet or griddle over medium heat and lightly grease with butter or oil.',
-                        'Pour 1/4 cup of batter onto the skillet for each pancake.',
-                        'Cook until bubbles form on the surface of the pancake and the edges are set, then flip and cook until golden brown on the other side.',
-                        'Serve the pancakes warm with maple syrup.'
-                    ]
-            ],
-            [
-                    'id' => 10,
-                    'recipeTitle' => 'Shrimp Tacos',
-                    'description' => 'Tasty shrimp tacos with a zesty lime slaw and creamy avocado sauce.',
-                    'category_id' => 1,
-                    'picture' => 'imagesRecepies/Normal/shrimp_tacos.jpg',
-                    'ingredients' => [
-                        '500g shrimp, peeled and deveined',
-                        '1 tbsp olive oil',
-                        '1 tsp chili powder',
-                        '1/2 tsp garlic powder',
-                        '1/2 tsp cumin',
-                        '1/4 tsp salt',
-                        '8 small tortillas',
-                        '1 cup shredded cabbage',
-                        '1/4 cup chopped cilantro',
-                        '1 lime, juiced',
-                        '1 avocado',
-                        '1/4 cup sour cream',
-                        'Salt and pepper'
-                    ],
-                    'preparationSteps' => [
-                        'In a large bowl, toss the shrimp with olive oil, chili powder, garlic powder, cumin, and salt.',
-                        'Heat a large skillet over medium-high heat and cook the shrimp until pink and opaque, about 2-3 minutes per side.',
-                        'In a small bowl, combine the shredded cabbage, chopped cilantro, and lime juice. Season with salt and pepper.',
-                        'In a blender, combine the avocado, sour cream, salt, and pepper. Blend until smooth and creamy.',
-                        'Warm the tortillas in a dry skillet or microwave.',
-                        'Assemble the tacos by placing a few shrimp on each tortilla, followed by the lime slaw and a drizzle of avocado sauce.',
-                        'Serve immediately.'
-                    ]
-            ],
-            [
-                        'id' => 11,
-                        'recipeTitle' => 'Margherita Pizza',
-                        'description' => 'A classic pizza with tomato sauce, mozzarella cheese, and fresh basil.',
-                        'category_id' => 1,
-                        'picture' => 'imagesRecepies/Normal/margherita_pizza.jpg',
-                        'ingredients' => [
-                            '1 pizza dough',
-                            '1 cup tomato sauce',
-                            '2 cups shredded mozzarella cheese',
-                            '1/4 cup fresh basil leaves',
-                            '1 tbsp olive oil',
-                            'Salt and pepper'
-                        ],
-                        'preparationSteps' => [
-                            'Preheat the oven to 475°F (245°C).',
-                            'Roll out the pizza dough on a floured surface.',
-                            'Spread the tomato sauce evenly over the dough.',
-                            'Sprinkle the shredded mozzarella cheese on top of the sauce.',
-                            'Add the fresh basil leaves and drizzle with olive oil.',
-                            'Season with salt and pepper.',
-                            'Bake the pizza for 10-12 minutes, until the crust is golden and the cheese is bubbly.',
-                            'Slice and serve immediately.'
-                        ]
-            ],
-            [
-                        'id' => 12,
-                        'recipeTitle' => 'Chicken Alfredo Pasta',
-                        'description' => 'A creamy pasta dish with chicken, Parmesan cheese, and a rich Alfredo sauce.',
-                        'category_id' => 1,
-                        'picture' => 'imagesRecepies/Normal/chicken_alfredo_pasta.jpg',
-                        'ingredients' => [
-                            '2 chicken breasts',
-                            '400g fettuccine pasta',
-                            '1 cup heavy cream',
-                            '1/2 cup grated Parmesan cheese',
-                            '2 cloves garlic, minced',
-                            '2 tbsp butter',
-                            'Salt and pepper',
-                            '2 tbsp chopped parsley'
-                        ],
-                        'preparationSteps' => [
-                            'Cook the fettuccine pasta according to package instructions.',
-                            'In a large skillet, melt the butter over medium heat.',
-                            'Add the minced garlic and cook until fragrant.',
-                            'Add the chicken breasts and cook until golden brown and fully cooked, then slice them.',
-                            'Pour in the heavy cream and bring to a simmer.',
-                            'Stir in the grated Parmesan cheese until the sauce is smooth and creamy.',
-                            'Add the cooked pasta and sliced chicken to the skillet and toss to coat with the sauce.',
-                            'Season with salt and pepper and garnish with chopped parsley.',
-                            'Serve immediately.'
-                        ]
-                    
-            ],
-            [
-                        'id' => 13,
-                        'recipeTitle' => 'Beef Tacos',
-                        'description' => 'Tasty beef tacos with a flavorful ground beef filling and fresh toppings.',
-                        'category_id' => 1,
-                        'picture' => 'imagesRecepies/Normal/beef_tacos.jpg',
-                        'ingredients' => [
-                            '500g ground beef',
-                            '1 packet taco seasoning',
-                            '1/2 cup water',
-                            '8 taco shells',
-                            '1 cup shredded lettuce',
-                            '1 cup diced tomatoes',
-                            '1 cup shredded cheese',
-                            '1/2 cup sour cream',
-                            '1/4 cup chopped cilantro'
-                        ],
-                        'preparationSteps' => [
-                            'In a large skillet, cook the ground beef over medium heat until browned.',
-                            'Drain any excess grease and stir in the taco seasoning and water.',
-                            'Simmer for 5 minutes until the beef is fully coated in the seasoning.',
-                            'Warm the taco shells in a dry skillet or microwave.',
-                            'Assemble the tacos by filling each shell with seasoned beef, shredded lettuce, diced tomatoes, shredded cheese, sour cream, and chopped cilantro.',
-                            'Serve immediately.'
-                        ]
+                'id' => 6,
+                'recipeTitle' => 'BBQ Ribs',
+                'description' => 'Tender and flavorful barbecue ribs with a smoky sauce.',
+                'category_id' => 1,
+                'utilisateur_id'=>1,
+                'picture' => 'imagesRecepies/Normal/bbq_ribs.jpg',
+                'ingredients' => [
+                    '1 rack of ribs',
+                    '1 cup barbecue sauce',
+                    '2 tablespoons brown sugar',
+                    '1 tablespoon paprika',
+                    '1 teaspoon garlic powder',
+                    '1 teaspoon onion powder',
+                    'Salt and pepper'
                 ],
-                [
-                        'id' => 14,
-                        'recipeTitle' => 'Greek Salad',
-                        'description' => 'A refreshing salad with cucumbers, tomatoes, olives, feta cheese, and a tangy dressing.',
-                        'category_id' => 4,
-                        'picture' => 'imagesRecepies/Normal/greek_salad.jpg',
-                        'ingredients' => [
-                            '1 cucumber',
-                            '2 tomatoes',
-                            '1/2 red onion',
-                            '1/4 cup Kalamata olives',
-                            '1/4 cup crumbled feta cheese',
-                            '2 tbsp olive oil',
-                            '1 tbsp red wine vinegar',
-                            '1 tsp dried oregano',
-                            'Salt and pepper'
-                        ],
-                        'preparationSteps' => [
-                            'Chop the cucumber, tomatoes, and red onion into bite-sized pieces.',
-                            'In a large salad bowl, combine the chopped vegetables, Kalamata olives, and crumbled feta cheese.',
-                            'In a small bowl, whisk together the olive oil, red wine vinegar, dried oregano, salt, and pepper.',
-                            'Pour the dressing over the salad and toss to combine.',
-                            'Serve immediately.'
-                        ]
+                'preparationSteps' => [
+                    'Preheat the oven to 160°C (325°F).',
+                    'In a small bowl, mix brown sugar, paprika, garlic powder, onion powder, salt, and pepper.',
+                    'Rub the spice mixture all over the ribs.',
+                    'Place the ribs on a baking sheet and cover with foil.',
+                    'Bake for 2-3 hours until the ribs are tender.',
+                    'Remove the foil and brush the ribs with barbecue sauce.',
+                    'Increase the oven temperature to 220°C (425°F) and bake for an additional 15-20 minutes until the sauce is bubbly.',
+                    'Serve hot.'
+                ]
+            ],
+            [
+                'id' => 7,
+                'recipeTitle' => 'Chicken Alfredo',
+                'description' => 'Creamy fettuccine Alfredo with grilled chicken.',
+                'category_id' => 1,
+                'utilisateur_id'=>1,
+                'picture' => 'imagesRecepies/Normal/chicken_alfredo.jpg',
+                'ingredients' => [
+                    '2 chicken breasts',
+                    '200g fettuccine',
+                    '1 cup heavy cream',
+                    '1/2 cup grated Parmesan cheese',
+                    '2 garlic cloves',
+                    '2 tablespoons butter',
+                    'Salt and pepper',
+                    'Parsley for garnish'
                 ],
-                [
-                        'id' => 15,
-                        'recipeTitle' => 'Chocolate Lava Cake',
-                        'description' => 'A rich and gooey chocolate cake with a molten center.',
-                        'category_id' => 3,
-                        'picture' => 'imagesRecepies/Normal/chocolate_lava_cake.jpg',
-                        'ingredients' => [
-                            '1/2 cup unsalted butter',
-                            '1 cup semisweet chocolate chips',
-                            '1 cup powdered sugar',
-                            '2 large eggs',
-                            '2 large egg yolks',
-                            '1 tsp vanilla extract',
-                            '1/4 cup all-purpose flour',
-                            'Butter for greasing',
-                            'Powdered sugar for dusting'
-                        ],
-                        'preparationSteps' => [
-                            'Preheat the oven to 425°F (220°C).',
-                            'Grease four ramekins with butter and dust with powdered sugar.',
-                            'In a microwave-safe bowl, melt the butter and chocolate chips together in 30-second intervals, stirring until smooth.',
-                            'Stir in the powdered sugar until well combined.',
-                            'Whisk in the eggs, egg yolks, and vanilla extract until smooth.',
-                            'Stir in the flour until just combined.',
-                            'Divide the batter evenly among the prepared ramekins.',
-                            'Bake for 12-14 minutes until the edges are set but the center is still soft.',
-                            'Let the cakes cool for 1 minute before inverting onto plates.',
-                            'Dust with powdered sugar and serve immediately.'
-                        ]
+                'preparationSteps' => [
+                    'Cook the fettuccine according to package instructions and drain.',
+                    'Season the chicken breasts with salt and pepper.',
+                    'Grill the chicken until fully cooked and slice.',
+                    'In a large pan, melt the butter over medium heat.',
+                    'Add minced garlic and cook for 1 minute.',
+                    'Add heavy cream and bring to a simmer.',
+                    'Stir in grated Parmesan cheese until the sauce is smooth.',
+                    'Add the cooked fettuccine and sliced chicken to the pan.',
+                    'Toss to combine and coat the pasta in the sauce.',
+                    'Garnish with parsley and serve immediately.'
+                ]
+            ],
+            [
+                'id' => 8,
+                'recipeTitle' => 'Tacos',
+                'description' => 'Ground beef tacos with fresh toppings.',
+                'category_id' => 1,
+                'utilisateur_id'=>1,
+                'picture' => 'imagesRecepies/Normal/tacos.jpg',
+                'ingredients' => [
+                    '500g ground beef',
+                    '1 taco seasoning packet',
+                    '8 taco shells',
+                    'Lettuce',
+                    'Tomato',
+                    'Cheese',
+                    'Sour cream',
+                    'Salsa'
                 ],
-                [
-                        'id' => 16,
-                        'recipeTitle' => 'Vegetable Lasagna',
-                        'description' => 'A delicious lasagna layered with vegetables, ricotta cheese, and marinara sauce.',
-                        'category_id' => 1,
-                        'picture' => 'imagesRecepies/Normal/vegetable_lasagna.jpg',
-                        'ingredients' => [
-                            '12 lasagna noodles',
-                            '2 cups marinara sauce',
-                            '1 cup ricotta cheese',
-                            '2 cups shredded mozzarella cheese',
-                            '1/2 cup grated Parmesan cheese',
-                            '1 zucchini, sliced',
-                            '1 bell pepper, sliced',
-                            '1 cup spinach',
-                            '2 cloves garlic, minced',
-                            '2 tbsp olive oil',
-                            'Salt and pepper'
-                        ],
-                        'preparationSteps' => [
-                            'Preheat the oven to 375°F (190°C).',
-                            'Cook the lasagna noodles according to package instructions and drain.',
-                            'In a large pan, heat the olive oil over medium heat.',
-                            'Add the minced garlic and cook until fragrant.',
-                            'Add the sliced zucchini, bell pepper, and spinach, and cook until tender.',
-                            'Spread a layer of marinara sauce in the bottom of a baking dish.',
-                            'Layer with lasagna noodles, ricotta cheese, vegetables, and shredded mozzarella cheese.',
-                            'Repeat layers, ending with noodles and sauce on top.',
-                            'Sprinkle with grated Parmesan cheese.',
-                            'Cover with aluminum foil and bake for 25 minutes.',
-                            'Remove the foil and bake for an additional 10 minutes until the cheese is melted and bubbly.',
-                            'Let cool for a few minutes before serving.'
-                        ]
+                'preparationSteps' => [
+                    'Cook the ground beef in a large pan over medium heat until browned.',
+                    'Add the taco seasoning packet and follow the package instructions.',
+                    'Warm the taco shells in the oven or microwave.',
+                    'Assemble the tacos with the seasoned beef, lettuce, diced tomato, shredded cheese, sour cream, and salsa.',
+                    'Serve immediately.'
+                ]
+            ],
+            [
+                'id' => 9,
+                'recipeTitle' => 'Lasagna',
+                'description' => 'Layers of pasta, meat sauce, and cheese baked to perfection.',
+                'category_id' => 1,
+                'utilisateur_id'=>1,
+                'picture' => 'imagesRecepies/Normal/lasagna.jpg',
+                'ingredients' => [
+                    '12 lasagna noodles',
+                    '500g ground beef',
+                    '1 onion',
+                    '2 garlic cloves',
+                    '800g canned tomatoes',
+                    '2 cups ricotta cheese',
+                    '2 cups shredded mozzarella cheese',
+                    '1 cup grated Parmesan cheese',
+                    '1 egg',
+                    '1 tablespoon basil',
+                    '1 tablespoon oregano',
+                    'Salt and pepper'
                 ],
-                [
-                        'id' => 17,
-                        'recipeTitle' => 'Chicken Fajitas',
-                        'description' => 'Sizzling chicken fajitas with bell peppers, onions, and a zesty seasoning.',
-                        'category_id' => 1,
-                        'picture' => 'imagesRecepies/Normal/chicken_fajitas.jpg',
-                        'ingredients' => [
-                            '2 chicken breasts, sliced',
-                            '1 red bell pepper, sliced',
-                            '1 yellow bell pepper, sliced',
-                            '1 onion, sliced',
-                            '2 tbsp olive oil',
-                            '1 packet fajita seasoning',
-                            '8 small tortillas',
-                            '1/2 cup sour cream',
-                            '1/2 cup salsa',
-                            '1/4 cup chopped cilantro',
-                            '1 lime, cut into wedges'
-                        ],
-                        'preparationSteps' => [
-                            'In a large bowl, toss the sliced chicken, bell peppers, and onion with olive oil and fajita seasoning.',
-                            'Heat a large skillet over medium-high heat and cook the chicken mixture until the chicken is cooked through and the vegetables are tender.',
-                            'Warm the tortillas in a dry skillet or microwave.',
-                            'Serve the chicken fajitas with sour cream, salsa, chopped cilantro, and lime wedges.',
-                            'Enjoy immediately.'
-                        ]
+                'preparationSteps' => [
+                    'Preheat the oven to 175°C (350°F).',
+                    'Cook the lasagna noodles according to package instructions and drain.',
+                    'In a large skillet, cook the ground beef, diced onion, and minced garlic until the beef is browned.',
+                    'Add the canned tomatoes, basil, oregano, salt, and pepper to the skillet.',
+                    'Simmer the meat sauce for 15-20 minutes.',
+                    'In a bowl, mix the ricotta cheese, egg, and half of the Parmesan cheese.',
+                    'Spread a layer of meat sauce on the bottom of a baking dish.',
+                    'Layer with lasagna noodles, ricotta mixture, shredded mozzarella, and meat sauce.',
+                    'Repeat the layers, ending with a layer of meat sauce and remaining Parmesan cheese.',
+                    'Cover with foil and bake for 25 minutes.',
+                    'Remove the foil and bake for an additional 25 minutes.',
+                    'Let the lasagna rest for 10 minutes before serving.'
+                ]
+            ],
+            [
+                'id' => 10,
+                'recipeTitle' => 'Chili Cheese Fries',
+                'description' => 'Crispy fries topped with chili and melted cheese.',
+                'category_id' => 2,
+                'utilisateur_id'=>1,
+                'picture' => 'imagesRecepies/Normal/chili_cheese_fries.jpg',
+                'ingredients' => [
+                    '4 large potatoes',
+                    '500g ground beef',
+                    '1 onion',
+                    '2 garlic cloves',
+                    '1 can kidney beans',
+                    '1 can diced tomatoes',
+                    '1 tablespoon chili powder',
+                    '1 teaspoon cumin',
+                    '2 cups shredded cheddar cheese',
+                    'Salt and pepper',
+                    'Vegetable oil'
                 ],
-                [
-                        'id' => 18,
-                        'recipeTitle' => 'Beef Stroganoff',
-                        'description' => 'Tender beef in a creamy mushroom sauce served over egg noodles.',
-                        'category_id' => 1,
-                        'picture' => 'imagesRecepies/Normal/beef_stroganoff.jpg',
-                        'ingredients' => [
-                            '500g beef sirloin, sliced',
-                            '1 onion, chopped',
-                            '2 cloves garlic, minced',
-                            '200g mushrooms, sliced',
-                            '1 cup beef broth',
-                            '1 cup sour cream',
-                            '2 tbsp flour',
-                            '2 tbsp butter',
-                            '2 tbsp olive oil',
-                            'Salt and pepper',
-                            '4 cups cooked egg noodles',
-                            '2 tbsp chopped parsley'
-                        ],
-                        'preparationSteps' => [
-                            'In a large skillet, heat the olive oil over medium-high heat.',
-                            'Add the sliced beef and cook until browned, then remove from the skillet and set aside.',
-                            'In the same skillet, add the butter and sauté the chopped onion, minced garlic, and sliced mushrooms until tender.',
-                            'Stir in the flour and cook for 1 minute.',
-                            'Gradually add the beef broth, stirring constantly until the sauce thickens.',
-                            'Return the beef to the skillet and stir in the sour cream.',
-                            'Season with salt and pepper.',
-                            'Serve the beef stroganoff over cooked egg noodles and garnish with chopped parsley.',
-                            'Enjoy immediately.'
-                        ]
-                    
+                'preparationSteps' => [
+                    'Preheat the oven to 200°C (400°F).',
+                    'Peel and cut the potatoes into fries.',
+                    'Toss the fries with vegetable oil, salt, and pepper.',
+                    'Spread the fries on a baking sheet and bake for 20-25 minutes, until crispy.',
+                    'In a skillet, cook the ground beef, diced onion, and minced garlic until the beef is browned.',
+                    'Add the kidney beans, diced tomatoes, chili powder, cumin, salt, and pepper to the skillet.',
+                    'Simmer the chili for 15-20 minutes.',
+                    'Arrange the baked fries on a serving platter.',
+                    'Top with the chili and shredded cheddar cheese.',
+                    'Bake for an additional 5 minutes, until the cheese is melted.'
+                ]
+            ],
+            [
+                'id' => 11,
+                'recipeTitle' => 'Bacon-Wrapped Jalapeño Poppers',
+                'description' => 'Spicy jalapeños stuffed with cheese and wrapped in bacon.',
+                'category_id' => 2,
+                'utilisateur_id'=>1,
+                'picture' => 'imagesRecepies/Normal/bacon_wrapped_jalapeno_poppers.jpg',
+                'ingredients' => [
+                    '12 jalapeños',
+                    '1 cup cream cheese',
+                    '1 cup shredded cheddar cheese',
+                    '12 slices bacon'
                 ],
-                [
-                        'id' => 19,
-                        'recipeTitle' => 'Apple Pie',
-                        'description' => 'A classic apple pie with a flaky crust and a sweet, spiced apple filling.',
-                        'category_id' =>3,
-                        'picture' => 'imagesRecepies/Normal/apple_pie.jpg',
-                        'ingredients' => [
-                            '2 pie crusts',
-                            '6 cups sliced apples',
-                            '3/4 cup sugar',
-                            '2 tbsp all-purpose flour',
-                            '1 tsp ground cinnamon',
-                            '1/4 tsp ground nutmeg',
-                            '1 tbsp lemon juice',
-                            '1 tbsp butter',
-                            '1 egg, beaten',
-                            '1 tbsp coarse sugar (optional)'
-                        ],
-                        'preparationSteps' => [
-                            'Preheat the oven to 425°F (220°C).',
-                            'Roll out one pie crust and fit it into a pie dish.',
-                            'In a large bowl, combine the sliced apples, sugar, flour, cinnamon, nutmeg, and lemon juice.',
-                            'Pour the apple mixture into the pie crust and dot with butter.',
-                            'Roll out the second pie crust and place it over the apples.',
-                            'Trim and crimp the edges to seal.',
-                            'Cut a few slits in the top crust to allow steam to escape.',
-                            'Brush the top crust with the beaten egg and sprinkle with coarse sugar if desired.',
-                            'Bake for 45-50 minutes until the crust is golden and the filling is bubbly.',
-                            'Let cool before serving.'
-                        ]
-                    ]
-        ];
-        
-
+                'preparationSteps' => [
+                    'Preheat the oven to 200°C (400°F).',
+                    'Cut the jalapeños in half lengthwise and remove the seeds.',
+                    'In a bowl, mix the cream cheese and shredded cheddar cheese.',
+                    'Stuff each jalapeño half with the cheese mixture.',
+                    'Wrap each stuffed jalapeño with a slice of bacon.',
+                    'Place the jalapeño poppers on a baking sheet.',
+                    'Bake for 20-25 minutes, until the bacon is crispy.',
+                    'Serve hot.'
+                ]
+            ],
+            [
+                'id' => 12,
+                'recipeTitle' => 'Chicken Alfredo',
+                'description' => 'Creamy pasta with grilled chicken and Alfredo sauce.',
+                'category_id' => 1,
+                'utilisateur_id'=>1,
+                'picture' => 'imagesRecepies/Normal/chicken_alfredo.jpg',
+                'ingredients' => [
+                    '2 chicken breasts',
+                    '200g fettuccine pasta',
+                    '1 cup heavy cream',
+                    '1 cup grated Parmesan cheese',
+                    '2 tablespoons butter',
+                    '2 garlic cloves',
+                    'Salt and pepper',
+                    'Parsley'
+                ],
+                'preparationSteps' => [
+                    'Cook the fettuccine pasta according to package instructions and drain.',
+                    'Season the chicken breasts with salt and pepper.',
+                    'Grill the chicken until fully cooked and slice into strips.',
+                    'In a saucepan, melt the butter over medium heat.',
+                    'Add minced garlic and sauté until fragrant.',
+                    'Add the heavy cream and bring to a simmer.',
+                    'Stir in the grated Parmesan cheese until melted.',
+                    'Add the cooked pasta to the sauce and toss to coat.',
+                    'Serve the pasta topped with grilled chicken and chopped parsley.'
+                ]
+            ],
+            [
+                'id' => 13,
+                'recipeTitle' => 'Chicken Parmesan',
+                'description' => 'Breaded chicken breasts topped with marinara sauce and melted cheese.',
+                'category_id' => 1,
+                'utilisateur_id'=>1,
+                'picture' => 'imagesRecepies/Normal/chicken_parmesan.jpg',
+                'ingredients' => [
+                    '2 chicken breasts',
+                    '1 cup breadcrumbs',
+                    '1/2 cup grated Parmesan cheese',
+                    '1 egg',
+                    '1 cup marinara sauce',
+                    '1 cup shredded mozzarella cheese',
+                    'Olive oil',
+                    'Salt and pepper',
+                    'Basil'
+                ],
+                'preparationSteps' => [
+                    'Preheat the oven to 200°C (400°F).',
+                    'Pound the chicken breasts to an even thickness.',
+                    'Season the chicken with salt and pepper.',
+                    'In a bowl, mix the breadcrumbs and grated Parmesan cheese.',
+                    'Dip the chicken breasts in beaten egg, then coat with the breadcrumb mixture.',
+                    'Heat olive oil in a skillet over medium heat.',
+                    'Cook the chicken breasts until golden brown, about 4-5 minutes per side.',
+                    'Transfer the chicken to a baking dish.',
+                    'Top each chicken breast with marinara sauce and shredded mozzarella cheese.',
+                    'Bake for 15-20 minutes, until the cheese is melted and bubbly.',
+                    'Garnish with fresh basil and serve.'
+                ]
+            ],
+            [
+                'id' => 14,
+                'recipeTitle' => 'Pulled Pork Sandwiches',
+                'description' => 'Tender pulled pork served on a bun with BBQ sauce and coleslaw.',
+                'category_id' => 1,
+                'utilisateur_id'=>1,
+                'picture' => 'imagesRecepies/Normal/pepperoni_pizza.jpg', // Note: The original file has a duplicate image reference.
+                'ingredients' => [
+                    '1 kg pork shoulder',
+                    '1 cup BBQ sauce',
+                    '1/4 cup brown sugar',
+                    '1 tablespoon paprika',
+                    '1 tablespoon garlic powder',
+                    'Salt and pepper',
+                    '4 burger buns',
+                    'Coleslaw'
+                ],
+                'preparationSteps' => [
+                    'Preheat the oven to 160°C (320°F).',
+                    'In a bowl, mix the brown sugar, paprika, garlic powder, salt, and pepper.',
+                    'Rub the seasoning mixture all over the pork shoulder.',
+                    'Place the pork in a baking dish and cover with foil.',
+                    'Bake for 4-5 hours, until the pork is tender and falls apart easily.',
+                    'Shred the pork with two forks.',
+                    'Mix the shredded pork with BBQ sauce.',
+                    'Serve the pulled pork on burger buns with coleslaw.'
+                ]
+            ],
+            [
+                'id' => 15,
+                'recipeTitle' => 'Chili Con Carne',
+                'description' => 'Hearty chili with ground beef, beans, and spices.',
+                'category_id' => 1,
+                'utilisateur_id'=>1,
+                'picture' => 'imagesRecepies/Normal/chili_con_carne.jpg',
+                'ingredients' => [
+                    '500g ground beef',
+                    '1 onion',
+                    '2 garlic cloves',
+                    '1 can kidney beans',
+                    '1 can diced tomatoes',
+                    '1 tablespoon chili powder',
+                    '1 teaspoon cumin',
+                    '1 teaspoon paprika',
+                    'Salt and pepper',
+                    'Cheddar cheese',
+                    'Sour cream',
+                    'Green onions'
+                ],
+                'preparationSteps' => [
+                    'In a large pot, cook the ground beef, diced onion, and minced garlic over medium heat until the beef is browned.',
+                    'Add the kidney beans, diced tomatoes, chili powder, cumin, paprika, salt, and pepper.',
+                    'Stir well and bring the mixture to a simmer.',
+                    'Reduce heat and let the chili cook for 30-40 minutes, stirring occasionally.',
+                    'Serve the chili hot, topped with shredded cheddar cheese, sour cream, and chopped green onions.'
+                ]
+            ],
+            [
+                'id' => 16,
+                'recipeTitle' => 'Mozzarella Sticks',
+                'description' => 'Deep-fried mozzarella sticks served with marinara sauce.',
+                'category_id' => 2,
+                'utilisateur_id'=>1,
+                'picture' => 'imagesRecepies/Normal/mozzarella_sticks.jpg',
+                'ingredients' => [
+                    '200g mozzarella cheese',
+                    '1 cup breadcrumbs',
+                    '1/2 cup all-purpose flour',
+                    '2 eggs',
+                    '1 teaspoon Italian seasoning',
+                    'Vegetable oil',
+                    'Marinara sauce'
+                ],
+                'preparationSteps' => [
+                    'Cut the mozzarella cheese into sticks.',
+                    'In a bowl, mix the breadcrumbs and Italian seasoning.',
+                    'Dredge the cheese sticks in flour, dip them in beaten eggs, and coat them in the breadcrumb mixture.',
+                    'Heat vegetable oil in a deep fryer or large pot to 180°C (350°F).',
+                    'Fry the mozzarella sticks in batches until golden brown, about 1-2 minutes.',
+                    'Drain on paper towels and serve with marinara sauce.'
+                ]
+            ],
+            [
+                'id' => 17,
+                'recipeTitle' => 'Fettuccine Carbonara',
+                'description' => 'Creamy pasta with bacon, eggs, and Parmesan cheese.',
+                'category_id' => 1,
+                'utilisateur_id'=>1,
+                'picture' => 'imagesRecepies/Normal/fettuccine_carbonara.jpg',
+                'ingredients' => [
+                    '200g fettuccine pasta',
+                    '4 slices bacon',
+                    '2 eggs',
+                    '1 cup grated Parmesan cheese',
+                    '2 garlic cloves',
+                    'Salt and pepper',
+                    'Parsley'
+                ],
+                'preparationSteps' => [
+                    'Cook the fettuccine pasta according to package instructions and drain.',
+                    'In a skillet, cook the diced bacon until crispy.',
+                    'In a bowl, whisk the eggs and grated Parmesan cheese together.',
+                    'Add minced garlic to the skillet and sauté for 1 minute.',
+                    'Add the cooked pasta to the skillet and toss to combine.',
+                    'Remove from heat and quickly stir in the egg mixture until the pasta is coated.',
+                    'Season with salt and pepper and garnish with chopped parsley.',
+                    'Serve immediately.'
+                ]
+            ],
+            [
+                'id' => 18,
+                'recipeTitle' => 'Chocolate Chip Cookies',
+                'description' => 'Chewy and delicious chocolate chip cookies.',
+                'category_id' => 3,
+                'utilisateur_id'=>1,
+                'picture' => 'imagesRecepies/Normal/chocolate_chip_cookies.jpg',
+                'ingredients' => [
+                    '1 cup butter',
+                    '1 cup sugar',
+                    '1 cup brown sugar',
+                    '2 eggs',
+                    '2 teaspoons vanilla extract',
+                    '3 cups all-purpose flour',
+                    '1 teaspoon baking soda',
+                    '1/2 teaspoon salt',
+                    '2 cups chocolate chips'
+                ],
+                'preparationSteps' => [
+                    'Preheat the oven to 180°C (350°F).',
+                    'In a large bowl, cream together the butter, sugar, and brown sugar until smooth.',
+                    'Beat in the eggs and vanilla extract.',
+                    'In another bowl, whisk together the flour, baking soda, and salt.',
+                    'Gradually add the dry ingredients to the wet ingredients and mix well.',
+                    'Stir in the chocolate chips.',
+                    'Drop rounded spoonfuls of dough onto a baking sheet.',
+                    'Bake for 10-12 minutes, until the edges are golden brown.',
+                    'Cool on wire racks before serving.'
+                ]
+            ],
+            [
+                'id' => 19,
+                'recipeTitle' => 'Stuffed Crust Pizza',
+                'description' => 'Pizza with a cheese-stuffed crust, topped with pepperoni and mozzarella.',
+                'category_id' => 1,
+                'utilisateur_id'=>1,
+                'picture' => 'imagesRecepies/Normal/stuffed_crust_pizza.jpg',
+                'ingredients' => [
+                    '1 pizza dough',
+                    '1 cup tomato sauce',
+                    '2 cups shredded mozzarella cheese',
+                    '1 cup string cheese',
+                    '100g pepperoni slices',
+                    'Olive oil',
+                    'Oregano'
+                ],
+                'preparationSteps' => [
+                    'Preheat the oven to 220°C (425°F).',
+                    'Roll out the pizza dough on a floured surface.',
+                    'Place the string cheese around the edge of the dough and fold the dough over to seal the cheese.',
+                    'Transfer the dough to a pizza stone or baking sheet.',
+                    'Spread the tomato sauce evenly over the dough.',
+                    'Sprinkle shredded mozzarella cheese on top.',
+                    'Arrange the pepperoni slices over the cheese.',
+                    'Drizzle with olive oil and sprinkle with oregano.',
+                    'Bake for 12-15 minutes, until the crust is golden and the cheese is bubbly.',
+                    'Slice and serve hot.'
+                ]
+            ]
+                ];
         foreach ($recipes as $recipeData) {
             $recipe = Recipe::create([
                 'id' => $recipeData['id'],

@@ -38,6 +38,7 @@
                     <button type="submit" class="w-full bg-[#B55D51] text-white font-bold py-2 rounded-lg hover:bg-[#a44c42] transition">Log in</button>
                     <div class="flex items-center justify-end mt-2">
                         @if (Route::has('password.request'))
+                            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none" href="{{ route('password.request') }}">
                             <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none " href="{{ route('password.request') }}">
                                 {{ __('Forgot your password?') }}
                             </a>

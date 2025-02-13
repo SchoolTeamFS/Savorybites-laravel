@@ -30,6 +30,8 @@ Route::middleware('auth')->group(function () {
     // Favorites Route (Note: Using GET for favorites display)
     Route::get('/favorite', [FavoriteController::class, 'index'])->name('favorite');
 });
+// Recipe listing route (specific route should come first)
+Route::get('/recipes', [RecipeController::class, 'index'])->name('recipes.index');
 
 // Category listing route
 Route::get('/categories', [CategoryController::class, 'index'])->name('recipes.listcateg');
@@ -40,3 +42,4 @@ Route::get('/{category}/{title}', [RecipeController::class, 'show'])->name('reci
 
 // Category detail route (e.g., list all recipes within a category)
 Route::get('/{category}', [CategoryController::class, 'showCategory'])->name('recipes.categ');
+
