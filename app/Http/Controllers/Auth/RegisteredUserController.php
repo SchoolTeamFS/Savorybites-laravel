@@ -38,21 +38,20 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
     
-        // Create User
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
     
-        // Create Utilisateur linked to this user
+        
         Utilisateur::create([
             'user_id' => $user->id,
-            'username' => $request->name, // Set username same as name
-            'image' => null, // Default null, can be updated later
-            'bio' => null, // Default null
+            'username' => $request->name, 
+            'image' => null, 
+            'bio' => null,  
             'joined_date' => Carbon::now(),
-            'role_id' => 2, // Assign default role (e.g., 2 for regular user)
+            'role_id' => 2, 
         ]);
     
         event(new Registered($user));

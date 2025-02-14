@@ -60,7 +60,7 @@ class DashboardServiceProvider extends ServiceProvider
             ['color' => '#1CB2F6'],
             ['color' => '#1685B8'],
             ['color' => '#e6df5d'],
-            ['color' => '#ff3838']
+            ['color' => '#eb0000']
         ];
         // Calculate category ratings
         // Get the categories
@@ -80,13 +80,11 @@ class DashboardServiceProvider extends ServiceProvider
                 'category' => $category->name,
                 'rating' => $categoryRating,
                 'percentage' => $percentage,
-                'color' => $color[$index]['color'] ?? '#FFFFFF'  // Default to white if no color is found
+                'color' => $color[$index]['color'] ?? '#FFFFFF'  
             ];
         }
 
- 
-         // Share data with all views
-         View::share([
+        View::share([
             'totalUsers' => $totalUsers,
             'totalComments' => $totalComments,
             'topActiveUsers' => $topActiveUsers,
