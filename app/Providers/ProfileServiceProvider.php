@@ -19,14 +19,14 @@ class ProfileServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::composer('profile.partials.update-profileinformation', function ($view) {
+        // View::composer('profile.partials.update-profileinformation', function ($view) {
             
 
-            $user = Auth::check() ? Auth::user()->load('utilisateur.role') : null;
+        //     $user = Auth::check() ? Auth::user()->load('utilisateur.role') : null;
 
-            $view->with([
-                'user' => $user
-            ]);
-        });
+        //     $view->with([
+        //         'user' => $user
+        //     ]);
+        // });
     }
 }
