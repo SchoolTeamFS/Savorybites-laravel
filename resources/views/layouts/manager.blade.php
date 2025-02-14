@@ -4,11 +4,7 @@
             <div class="min-w-[220px] m-2 rounded-[12px] text-white bg-[#b66055d9] border border-[#b66055d9] shadow-lg hover:-translate-y-1 hover:shadow-2xl transition duration-300">
                 <div class="flex items-center justify-between p-4">
                     <h3 class="text-lg font-semibold">Add User</h3>
-                    <p class="text-2xl">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 18.75v-3.75m0 0v-3.75m0 3.75h3.75m-3.75 0h-3.75M12 15.75A6.75 6.75 0 105.25 9a6.75 6.75 0 006.75 6.75z" />
-                        </svg>
-                    </p>
+                    <p class="text-2xl"><i class="fa-solid fa-plus"></i></p>
                 </div>
             </div>
         </a>
