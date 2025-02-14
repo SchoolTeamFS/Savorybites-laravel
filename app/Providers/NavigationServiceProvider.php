@@ -23,16 +23,16 @@ class NavigationServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // View::composer('layouts.navigation', function ($view) {
-        //     // Récupérer les catégories
-        //     $categories = Category::all();
+        View::composer('layouts.navigation', function ($view) {
 
-        //     $user = Auth::check() ? Auth::user()->load('utilisateur.role') : null;
+            $categories = Category::all();
 
-        //     $view->with([
-        //         'categories' => $categories,
-        //         'user' => $user
-        //     ]);
-        // });
+            $user = Auth::check() ? Auth::user()->load('utilisateur.role') : null;
+
+            $view->with([
+                'categories' => $categories,
+                'user' => $user
+            ]);
+        });
     }
 }
