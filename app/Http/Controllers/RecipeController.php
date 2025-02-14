@@ -15,7 +15,11 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        //
+        // Récupérer toutes les recettes depuis la base de données
+        $recipes = Recipe::with('ingredients', 'preparationSteps')->get();
+
+        // Retourner la vue avec les données
+        return view('recipesCRUD.recepies', compact('recipes'));
     }
 
     /**

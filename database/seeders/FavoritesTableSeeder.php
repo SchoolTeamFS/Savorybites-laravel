@@ -10,8 +10,8 @@ class FavoritesTableSeeder extends Seeder
     public function run()
     {
         $favorites = [
-            ['utilisateur_id' => 2, 'recipe_id' => 1],
-           
+            ['utilisateur_id' => 3, 'recipe_id' => 1],
+            ['utilisateur_id' => 4, 'recipe_id' => 2],
            
         ];
 

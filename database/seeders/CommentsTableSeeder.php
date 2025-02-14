@@ -10,8 +10,9 @@ class CommentsTableSeeder extends Seeder
     public function run()
     {
         $comments = [
-            ['utilisateur_id' => 2, 'recipe_id' => 1, 'content' => 'Great recipe!'],
-            // Ajoute d'autres commentaires ici...
+            ['utilisateur_id' => 3, 'recipe_id' => 1, 'content' => 'Great recipe!'],
+            ['utilisateur_id' => 4, 'recipe_id' => 1, 'content' => 'so delecious!'],
+           
         ];
 
         foreach ($comments as $comment) {

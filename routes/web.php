@@ -36,6 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/update-user/{id}', [ManagerController::class, 'update'])->name('manage-user.update');
     Route::delete('/update-user/{id}', [ManagerController::class, 'destroy'])->name('manage-user.destroy');
 });
+Route::get('/recipes', [RecipeController::class, 'index'])->name('recipes.index');
 
 // Category listing route
 Route::get('/categories', [CategoryController::class, 'index'])->name('recipes.listcateg');
@@ -49,3 +50,4 @@ Route::get('/{category}', [CategoryController::class, 'showCategory'])->name('re
 use App\Http\Controllers\CommentController;
 
 Route::post('/recipe/{recipe}/comment', [CommentController::class, 'store'])->name('comments.store');
+

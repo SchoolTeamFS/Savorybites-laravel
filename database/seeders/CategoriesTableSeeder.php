@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\Seeders;
+
 use App\Models\Category;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -13,13 +14,31 @@ class CategoriesTableSeeder extends Seeder
     public function run(): void
     { 
         $categories = [
-        ['name' => 'Main Course'],
-        ['name' => 'Appetizer'],
-        ['name' => 'Dessert'],
-        ['name' => 'Salad'],
-        ['name' => 'Soup'],
-        ['name' => 'Beverage'],
-        ['name' => 'Snack']
+            [
+                'name' => 'Main Course',
+                'image' => 'images/categimage/maincourse.jpg'
+            ],
+            [
+                'name' => 'Appetizer',
+                'image' => 'images/categimage/app.jpg'
+            ],
+            [
+                'name' => 'Dessert',
+                'image' => 'images/categimage/dessert.jpg'
+            ],
+            [
+                'name' => 'Salad',
+                'image' => 'path/to/salad.jpg'
+            ],
+            [
+                'name' => 'Soup',
+                'image' => 'images/categimage/soupe.jpg'
+            ],
+           
+            [
+                'name' => 'Snack',
+                'image' => 'images/categimage/snack.jpg'
+            ]
         ];
 
         foreach ($categories as $category) {
