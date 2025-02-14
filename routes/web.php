@@ -32,6 +32,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/favorite', [FavoriteController::class, 'index'])->name('favorite');
     
     Route::get('/manage-users', [ManagerController::class, 'index'])->name('manage-users');
+    Route::get('/manage-users/add-user', [ManagerController::class, 'create'])->name('manage-user.add');
+    Route::post('/manage-users', [ManagerController::class, 'store'])->name('manage-user.store');
     Route::get('/update-user/{id}', [ManagerController::class, 'edit'])->name('manage-user.edit');
     Route::patch('/update-user/{id}', [ManagerController::class, 'update'])->name('manage-user.update');
     Route::delete('/update-user/{id}', [ManagerController::class, 'destroy'])->name('manage-user.destroy');

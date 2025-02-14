@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="fixed top-0 left-0 w-full z-50 bg-white shadow-md border-b border-gray-100">
+<nav x-data="{ open: false }" class="fixed z-[1000] top-0 left-0 w-full z-50 bg-white shadow-md border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -136,16 +136,17 @@
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="px-4">
                 <div class="font-medium text-base text-gray-800">
-                    {{ Auth::user()?->utilisateur?->name ?? 'Invité' }}
+                    {{ Auth::user()?->name ?? 'Invité' }}
                 </div>
                 <div class="font-medium text-sm text-gray-500">
-                    {{ Auth::user()?->utilisateur?->email ?? 'Aucun email' }}
+                    {{ Auth::user()?->email ?? 'Aucun email' }}
                 </div>
             </div>
 
             <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
+                
+                <x-responsive-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
+                    {{ __('Profil') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->

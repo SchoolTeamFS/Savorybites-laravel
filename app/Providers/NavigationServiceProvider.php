@@ -24,7 +24,7 @@ class NavigationServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer('layouts.navigation', function ($view) {
-            // Récupérer les catégories
+
             $categories = Category::all();
 
             $user = Auth::check() ? Auth::user()->load('utilisateur.role') : null;
