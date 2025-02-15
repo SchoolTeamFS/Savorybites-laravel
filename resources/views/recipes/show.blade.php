@@ -34,21 +34,25 @@
         </div>
     
         @php
-            $note = $recipe->ratings->avg('rating') ?? 0; 
+            $note = $recipe->ratings->avg('rating'); 
+            $note = $note ?? 0;
             $entier = floor($note); 
             $decimal = $note - $entier; 
+            $starColor = $note > 0 ? '#B55D51' : ''; 
         @endphp
-        <div class="flex items-center">
-            @for ($i = 1; $i <= 5; $i++)
-                @if ($i <= $entier)
-                    <i class="fas fa-star " style="color: #B55D51; font-size: 1.2em;"></i> 
-                @elseif ($i == $entier + 1 && $decimal > 0)
-                    <i class="fas fa-star-half-alt " style="color: #B55D51; font-size: 1.2em;"></i> 
-                @else
-                    <i class="far fa-star text-gray-400"></i> 
-                @endif
-            @endfor
-        </div>
+
+<div class="flex items-center">
+    @for ($i = 1; $i <= 5; $i++)
+        @if ($i <= $entier)
+            <i class="fas fa-star" style="color: {{ $starColor }}; font-size: 1.2em;"></i> 
+        @elseif ($i == $entier + 1 && $decimal > 0)
+            <i class="fas fa-star-half-alt" style="color: {{ $starColor }}; font-size: 1.2em;"></i> 
+        @else
+            <i class="far fa-star text-gray-400"></i> 
+        @endif
+    @endfor
+</div>
+
     </div>
     <div class="ing-img">
         <div class="left-side">
