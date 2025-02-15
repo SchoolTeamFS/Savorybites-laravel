@@ -148,27 +148,29 @@
                             <div class="user-details">
                                 <span class="username">{{ $comment->utilisateur->username }}</span> 
                                 <p class="comment-date">{{ $comment->created_at->format('d-m-Y H:i') }}</p>
+                                <div class="rating">
+                                    @php
+                                        $rating = $recipe->ratings->where('utilisateur_id', $comment->utilisateur->id)->first();
+                                        $ratingValue = $rating ? $rating->rating : 0; 
+                                        $fullStars = floor($ratingValue);  
+                                        $halfStar = ($ratingValue - $fullStars) >= 0.5 ? true : false; 
+                                        $emptyStars = 5 - ceil($ratingValue); 
+                                    @endphp
+                                    @for ($i = 1; $i <= $fullStars; $i++)
+                                        <i class="fas fa-star" style="color: #B55D51;"></i>
+                                    @endfor
+                                    @if ($halfStar)
+                                        <i class="fas fa-star-half-alt" style="color: #B55D51;"></i>
+                                    @endif    
+                                    @for ($i = 1; $i <= $emptyStars; $i++)
+                                        <i class="far fa-star" style="color: #B55D51;"></i>
+                                    @endfor
+                                </div>
                             </div>
+                            
                         </div>
                         <p class="comment-text">{{ $comment->content }}</p>
-                        <div class="rating">
-                            @php
-                                $rating = $recipe->ratings->where('utilisateur_id', $comment->utilisateur->id)->first();
-                                $ratingValue = $rating ? $rating->rating : 0; 
-                                $fullStars = floor($ratingValue);  
-                                $halfStar = ($ratingValue - $fullStars) >= 0.5 ? true : false; 
-                                $emptyStars = 5 - ceil($ratingValue); 
-                            @endphp
-                            @for ($i = 1; $i <= $fullStars; $i++)
-                                <i class="fas fa-star" style="color: #B55D51;"></i>
-                            @endfor
-                            @if ($halfStar)
-                                <i class="fas fa-star-half-alt" style="color: #B55D51;"></i>
-                            @endif    
-                            @for ($i = 1; $i <= $emptyStars; $i++)
-                                <i class="far fa-star" style="color: #B55D51;"></i>
-                            @endfor
-                        </div>
+                        
     
                         @if ($comment->utilisateur_id === auth()->id())
                         <div style="display: flex">
