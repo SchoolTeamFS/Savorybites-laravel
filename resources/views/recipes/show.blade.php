@@ -41,19 +41,19 @@
             margin-bottom: 10px;
             width: 100%;
         }
-        nav p {
+        .nav p {
             font-style: italic;
             color: gray;
             margin-left: 40px;
         }
 
-        nav a {
+        .nav a {
             color: gray;
             text-decoration: none;
             text-transform: uppercase;
         }
 
-        nav a:hover {
+        .nav a:hover {
             color: darkgray;
         }
     .comment-form-container h3 {
@@ -200,7 +200,7 @@
 
     </style>
 
-    <nav>
+    <div class="nav">
         <p>
             <a href="{{ url('/categories') }}">Catégories</a> 
             @isset($category)
@@ -212,7 +212,7 @@
                 > {{ $recipe->recipeTitle }}
             @endisset
         </p>
-    </nav>
+    </div>
 
     <h1>{{ $recipe->recipeTitle }}</h1>
     <h3>{{ $recipe->description }}</h3>
