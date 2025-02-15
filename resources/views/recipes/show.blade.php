@@ -52,6 +52,7 @@
                 @endif
             @endfor
         </div>
+        {{----------------------- BTN_FAV -------------------}}
         <form action="" method="">
             @csrf
             <button type="submit" class="inline-flex items-center gap-2 px-4 py-2 border rounded text-[#B55D51] bg-transparent border-[#B55D51]">
@@ -59,8 +60,7 @@
                 <span>Save</span>
             </button>
         </form>
-        
-        
+        {{-------------------------------------------------}}
     </div>
     <div class="ing-img">
         <div class="left-side">
