@@ -9,7 +9,7 @@
                         <h3 class="text-xl font-semibold">Users</h3>
                         <h2 class="text-3xl font-bold">{{ $totalUsers }}</h2>
                     </div>
-                    <p class="text-5xl"><i class="pi pi-users"></i></p>
+                    <p class="text-4xl"><i class="fa-regular fa-user"></i></p>
                 </div>
             </div>
             <div class="w-80 p-5 rounded-lg bg-[#B55D51] text-white shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition">
@@ -18,7 +18,7 @@
                         <h3 class="text-xl font-semibold">Comments</h3>
                         <h2 class="text-3xl font-bold">{{ $totalComments }}</h2>
                     </div>
-                    <p class="text-5xl"><i class="la la-comments"></i></p>
+                    <p class="text-4xl"><i class="fa-regular fa-comment"></i></p>
                 </div>
             </div>
         </div>
@@ -26,11 +26,10 @@
         <h1 class="text-2xl font-bold my-5">Ratings</h1>
         <div class="flex justify-center">
             <div class="grid md:grid-cols-3 gap-5 w-full max-w-6xl">
-                <div></div> <!-- Empty div to center -->
+                <div></div> 
                 <div class="bg-white p-5 shadow-lg rounded-xl hover:shadow-xl transform hover:-translate-y-1 transition">
                     <h2 class="text-xl font-semibold">Recipes Average Rating</h2>
 
-                    <!-- Canvas for the Chart -->
                     <div class="relative w-60 h-60 mx-auto">
                         <canvas id="RatingsChart"></canvas>
                     </div>

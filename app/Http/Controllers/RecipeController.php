@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Recipe;
 use App\Models\Category;
 use App\Models\Utilisateur;
+use App\Exports\RecipesExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 use Illuminate\Http\Request;
 
@@ -89,4 +91,8 @@ class RecipeController extends Controller
     {
         //
     }
-}
+    public function exportCSV()
+    {
+        return Excel::download(new RecipesExport, 'recipes.csv');
+    }
+   }

@@ -23,19 +23,15 @@ class DashboardServiceProvider extends ServiceProvider
      * Bootstrap services.
      */
     public function boot(): void
-    {//bdaw commentaire mnhna
-         // Fetch all users and comments
+    {
          $users = User::all();
          $comments = Comment::all();
          
-         // Count total users and comments
          $totalUsers = $users->count();
          $totalComments = $comments->count();
      
-         // Count comments per user
          $userCommentCounts = $comments->groupBy('utilisateur_id')->map->count();
          
-         // Get top active users
          $topActiveUsers = $users->filter(fn ($user) => isset($userCommentCounts[$user->id]))
              ->map(fn ($user) => [
                  'username' => $user->name,
@@ -45,14 +41,11 @@ class DashboardServiceProvider extends ServiceProvider
              ->sortByDesc('commentCount')
              ->take(10);
 
-        // Calculate total rating and average rating
         $recipes = Recipe::with('ratings')->get();
-        // Calculate total rating and average rating
-        $totalRating = $recipes->flatMap->ratings->sum('rating');
-        $totalRecipes = $recipes->count();
-        $averageRating = $totalRating ? round($totalRating / $totalRecipes, 2) : 0;
 
-        // Define the color array
+        $totalRating = $recipes->flatMap->ratings->sum('rating');
+        $averageRating = $recipes->flatMap->ratings->avg('rating');
+
         $color = [
             ['color' => '#FF6838'],
             ['color' => '#FFC820'],
@@ -60,33 +53,28 @@ class DashboardServiceProvider extends ServiceProvider
             ['color' => '#1CB2F6'],
             ['color' => '#1685B8'],
             ['color' => '#e6df5d'],
-            ['color' => '#ff3838']
+            ['color' => '#eb0000']
         ];
-        // Calculate category ratings
-        // Get the categories
+
         $categories = Category::all();
         $categoryRatings = [];
-         // Loop over categories and colors
+
         foreach ($categories as $index => $category) {
-            // Get the total rating for recipes in this category
+
             $categoryRecipes = $category->recipes;
             $categoryRating = $categoryRecipes->flatMap->ratings->sum('rating');
             
-            // Calculate the percentage of the total rating for this category
             $percentage = $totalRating ? round($categoryRating / $totalRating, 2) : 0;
 
-            // Ensure that the category color corresponds to the category
             $categoryRatings[] = [
                 'category' => $category->name,
                 'rating' => $categoryRating,
                 'percentage' => $percentage,
-                'color' => $color[$index]['color'] ?? '#FFFFFF'  // Default to white if no color is found
+                'color' => $color[$index]['color'] ?? '#FFFFFF'  
             ];
         }
 
- 
-         // Share data with all views
-         View::share([
+        View::share([
             'totalUsers' => $totalUsers,
             'totalComments' => $totalComments,
             'topActiveUsers' => $topActiveUsers,

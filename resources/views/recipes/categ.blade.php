@@ -1,4 +1,21 @@
 <x-app-layout>
+    <style>
+         nav p {
+            font-style: italic;
+            color: gray;
+            margin-left: 40px;
+        }
+
+        nav a {
+            color: gray;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            color: darkgray;
+        }
+    </style>
 <nav>
     <p>
         <a href="{{ url('/') }}">Categories</a> 
@@ -10,7 +27,6 @@
 
     </p>
 </nav>
-    <h1>Category:{{ $categoryName }}</h1>
 
     <ul>
         @foreach($recipes as $recipe)

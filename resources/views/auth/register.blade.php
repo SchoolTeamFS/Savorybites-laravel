@@ -9,8 +9,8 @@
         
         <div class="flex bg-white p-8 rounded-lg shadow-lg w-3/4 max-w-4xl">
             <!-- Image Section -->
-            <div class="w-1/2 hidden md:block">
-                <img src="{{ asset('path-to-your-image.jpg') }}" alt="Register" class="rounded-lg shadow-md">
+            <div class="w-1/2 hidden md:block mt-20">
+                <img src="{{ asset('../../../images/login.jpg') }}" alt="Register" class="rounded-lg shadow-md">
             </div>
             
             <!-- Form Section -->
