@@ -14,7 +14,11 @@
     font-weight: 600;
     margin-bottom: 10px;
 }
-
+.instructions-container h2{
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
 .ingredient-item {
     display: flex;
     align-items: center;
@@ -24,8 +28,8 @@
 
 .ing-img {
     display: flex;
-    justify-content: space-between;
-    gap: 20px;
+    justify-content: space-around;
+    gap: 30px;
     margin-top: 20px;
 
 }
@@ -36,6 +40,7 @@
 
 .right-side {
     flex: 0 0 35%; 
+    margin-left: 20px;
 }
 
 

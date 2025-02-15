@@ -69,11 +69,35 @@ class RecipeController extends Controller
             ->get()
             ->sortByDesc(fn($recipe) => $recipe->ratings->avg('rating'))
             ->take(5);
-        return view('layouts.home', ['topRecipes' => $topRecipes]);
+        $recipes = Recipe::with('category')->get();
+        $categories = Category::all()->pluck('image', 'name');
+        return view('layouts.home', compact('topRecipes', 'recipes', 'categories'));
     }
     
     
     
+    // public function popularCategories()
+    // {
+    //     // Récupérer toutes les recettes
+    //     $recipes = Recipe::with('category')->get();
+
+    //     // Récupérer les catégories uniques des recettes
+    //     $categories = $recipes->pluck('category.name')->unique();
+
+    //     // Les images associées aux catégories
+    //     $categoryImages = [
+    //         'Main Course' => asset('images/categimage/maincourse.jpg'),
+    //         'Appetizer' => asset('images/categimage/app.jpg'),
+    //         'Dessert' => asset('images/categimage/dessert.jpg'),
+    //         'Salad' => asset('images/categimage/salade.jpg'),
+    //         'Soup' => asset('images/categimage/soupe.jpg'),
+    //         'Side Dish' => asset('images/categimage/R.jpg'),
+    //         'Snack' => asset('images/categimage/snack.jpg'),
+    //     ];
+
+    //     // Passer les données à la vue
+    //     return view('layouts.home', compact('recipes', 'categories', 'categoryImages'));
+    // }
 
     
     /**

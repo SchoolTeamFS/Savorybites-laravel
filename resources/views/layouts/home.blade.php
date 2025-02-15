@@ -11,7 +11,19 @@
             @endforeach
         </div>
     </div>
+    <div style="display: flex; margin-top: 20px; justify-content: space-around; flex-wrap: wrap;">
+        @foreach ($categories as $name => $image)
+            <a href="{{ route('recipes.categ', ['category' => Str::slug($name)]) }}" style="text-decoration: none; color: inherit;">
+                <div style="text-align: center; margin: 30px;">
+                    <img src="{{ asset($image) }}" alt="{{ $name }}" style="width: 120px; height: 120px; border-radius: 50%;" />
+                    <h2 style="font-family: initial;">{{ $name }}</h2>
+                </div>
+            </a>
+        @endforeach
+    </div>
     
+    
+
     
 
     <script>
