@@ -39,17 +39,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('/update-user/{id}', [ManagerController::class, 'destroy'])->name('manage-user.destroy');
 });
 Route::get('/recipes', [RecipeController::class, 'index'])->name('recipes.index');
-
-// Category listing route
 Route::get('/categories', [CategoryController::class, 'index'])->name('recipes.listcateg');
 
 
-// Recipe detail route, expecting both a category slug and a title parameter
 Route::get('/{category}/{title}', [RecipeController::class, 'show'])->name('recipe.show');
 
-// Category detail route (e.g., list all recipes within a category)
 Route::get('/{category}', [CategoryController::class, 'showCategory'])->name('recipes.categ');
 use App\Http\Controllers\CommentController;
 
 Route::post('/recipe/{recipe}/comment', [CommentController::class, 'store'])->name('comments.store');
 
+Route::post('/recipe/{recipeId}/comment', [CommentController::class, 'store'])->name('comments.store');
+Route::put('/comment/{commentId}', [CommentController::class, 'update'])->name('comments.update');
+Route::delete('/comment/{commentId}', [CommentController::class, 'destroy'])->name('comments.destroy');

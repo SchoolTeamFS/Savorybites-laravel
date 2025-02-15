@@ -2,86 +2,71 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\Comment;
-use Illuminate\Http\Request;use App\Models\Recipe;
+use App\Models\Rating;
+use App\Models\Recipe; 
 use Illuminate\Support\Str;
 
 class CommentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function store(Request $request, $recipeId)
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request, Recipe $recipe)
-    {
-        // Valider la donnée
         $request->validate([
-            'content' => 'required|string|max:255',
+            'content' => 'required|string',
+            'rating' => 'numeric|min:1|max:5',
         ]);
-    
-        // Créer une nouvelle instance de Comment
         $comment = new Comment();
-    
-        // Remplir les attributs de Comment
         $comment->content = $request->content;
-        $comment->recipe_id = $recipe->id;
-        $comment->utilisateur_id = auth()->id(); // Si tu as un utilisateur authentifié
-    
-        // Sauvegarder le commentaire dans la base de données
+        $comment->utilisateur_id = auth()->id(); 
+        $comment->recipe_id = $recipeId;
         $comment->save();
-    
-        // Rediriger vers la page des détails de la recette avec un message de succès
+        $rating = Rating::where('utilisateur_id', auth()->id())
+                        ->where('recipe_id', $recipeId)
+                        ->first();
+
+        if ($rating) {
+            $rating->rating = $request->rating;
+            $rating->save();
+        } else {
+            $rating = new Rating();
+            $rating->rating = $request->rating;
+            $rating->utilisateur_id = auth()->id();
+            $rating->recipe_id = $recipeId;
+            $rating->save();
+        }
+
+        $recipe = Recipe::findOrFail($recipeId); 
         return redirect()->route('recipe.show', [
             'category' => Str::slug($recipe->category->name),
             'title' => Str::slug($recipe->recipeTitle),
         ])->with('success', 'Commentaire ajouté avec succès!');
     }
-    
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Comment $comment)
+    public function update(Request $request, $commentId)
     {
-        //
+        $comment = Comment::findOrFail($commentId);
+        if ($comment->utilisateur_id !== auth()->id()) {
+            return redirect()->back()->with('error', 'Vous ne pouvez modifier que vos propres commentaires.');
+        }
+        $request->validate([
+            'content' => 'required|string',
+        ]);
+        $comment->content = $request->content;
+        $comment->save();
+        $recipe = Recipe::findOrFail($comment->recipe_id);
+        return redirect()->route('recipe.show', [
+            'category' => Str::slug($recipe->category->name),
+            'title' => Str::slug($recipe->recipeTitle),
+        ])->with('success', 'Commentaire modifié avec succès!');
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Comment $comment)
+    public function destroy($commentId)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Comment $comment)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Comment $comment)
-    {
-        //
+        $comment = Comment::findOrFail($commentId);
+        if ($comment->utilisateur_id === auth()->id() || auth()->user()->utilisateur->role->name
+        ) {
+            $comment->delete();
+            return redirect()->back()->with('success', 'Commentaire supprimé avec succès!');
+        }
+        return redirect()->back()->with('error', 'Vous ne pouvez supprimer que vos propres commentaires.');
     }
 }

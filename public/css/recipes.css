@@ -1,0 +1,306 @@
+.ingredients-container {
+    background-color: #f9f9f9;
+    color: black;
+    width: 30%;
+    height: 400px;
+    text-align: left;
+    border-radius: 5px;
+    padding: 15px;
+    margin-right: 130px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ingredient-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+.ing-img{
+    display: flex;
+    justify-content: space-between;
+}
+
+.ingredient-item input[type="checkbox"]:checked + span {
+    text-decoration: line-through;
+    color: gray;
+}
+.ingredient-item input[type="checkbox"] {
+    margin-right: 15px;
+    transform: scale(1.2);
+    appearance: none; 
+    width: 16px; 
+    height: 16px; 
+    border: 2px solid gray;
+    border-radius: 3px; 
+    background-color: white; 
+    cursor: pointer;
+}
+
+.ingredient-item input[type="checkbox"]:checked {
+    background-color: #B55D51;
+    border: 2px solid gray; 
+}
+
+.ingredient-item input[type="checkbox"]:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.recipeimg {
+    width: 50%;  
+    height: auto; 
+    object-fit: cover;
+    border-radius: 30px;
+}
+h3{
+    margin-left: '20px';
+    font-size: '2em' 
+}
+
+h2 {
+    margin-bottom: 10px;
+    width: 100%;
+    font-weight: bold;
+}
+nav p {
+    font-style: italic;
+    color: gray;
+}
+
+nav a {
+    color: gray;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+nav a:hover {
+    color: darkgray;
+}
+.comment-form-container {
+    width: 50%;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.comment-form-container h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.comment-form-container textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    resize: none;
+}
+
+.comment-form-container label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.comment-form-container input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.comment-form-container button {
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #B55D51;
+    color: white;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.comment-form-container button:hover {
+    background-color: #994a42;
+}
+
+@media (max-width: 768px) {
+    .comment-form-container {
+        width: 90%;
+    }
+}
+
+
+.comment-item {
+margin-bottom: 20px;
+padding: 15px;
+border-radius: 5px;
+}
+
+.user-info {
+display: flex;
+align-items: center;
+gap: 10px;
+margin-bottom: 10px;
+}
+
+.user-photo {
+width: 40px;
+height: 40px;
+border-radius: 50%;
+object-fit: cover;
+}
+
+.username {
+font-size: 16px;
+color: #B55D51;
+}
+
+.comment-text {
+font-size: 14px;
+color: #333;
+margin: 10px 0;
+}
+
+.edit-container {
+display: flex;
+flex-direction: column;
+gap: 10px;
+margin-bottom: 10px;
+}
+
+.edit-input {
+width: 100%;
+padding: 10px;
+font-size: 14px;
+border: 1px solid #ccc;
+border-radius: 5px;
+outline: none;
+}
+
+.stars-container {
+display: flex;
+gap: 5px;
+align-items: center;
+}
+
+.button-container {
+display: flex;
+gap: 10px;
+margin-top: 10px;
+}
+
+
+
+.no-comments {
+text-align: center;
+color: #666;
+font-size: 16px;
+}
+
+.container {
+    max-width: 800px;
+}
+
+.comment-item {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
+    width: 100%;
+}
+
+.comment-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.user-info {
+    display: flex;
+    gap: 10px;
+}
+
+.user-photo-container {
+    flex-shrink: 0;
+}
+
+.user-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.username {
+    font-weight: bold;
+}
+
+.comment-date {
+    font-size: 12px;
+    color: #888;
+}
+
+.comment-text {
+    font-size: 14px;
+    color: #555;
+}
+
+.rating i {
+    font-size: 14px;
+    color: #B55D51;
+}
+
+.edit-form, .delete-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.edit-form textarea {
+    width: 100%;
+    resize: none;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.btn-edit, .btn-delete {
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.btn-edit {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btn-delete {
+    background-color: #f44336;
+    color: white;
+}
+
+.btn-edit:hover, .btn-delete:hover {
+    opacity: 0.8;
+}
