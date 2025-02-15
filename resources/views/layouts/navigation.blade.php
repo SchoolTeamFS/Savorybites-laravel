@@ -89,8 +89,29 @@
                     </div> 
                 @endif
             </div>
-
+            
             <div class="hidden sm:flex sm:items-center sm:ms-6">
+                @if($user?->utilisateur?->role_id === 1)
+                    <div class="hidden mx-[50px] sm:flex sm:items-center sm:ms-6">
+                        <x-dropdown align="left" width="48">
+                            <x-slot name="trigger">
+                                <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                                    <div class="ms-1">
+                                        <i class="fa-solid fa-download"></i>
+                                    </div>
+                                </button>
+                            </x-slot>
+                            <x-slot name="content">
+                                <x-dropdown-link :href="route('recipes.export')">
+                                    {{ __('Export Recepies CSV') }}
+                                </x-dropdown-link>
+                                <x-dropdown-link :href="route('users.export')">
+                                    {{ __('Export Users CSV') }}
+                                </x-dropdown-link>
+                            </x-slot>
+                        </x-dropdown>
+                    </div>
+                @endif
                 @if(Auth::check())
                     <!-- If user is logged in -->
                     <form method="POST" action="{{ route('logout') }}">
