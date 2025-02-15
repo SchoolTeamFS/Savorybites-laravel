@@ -1,5 +1,4 @@
 <x-app-layout>
-    @section('nav')
 @section('content')
 
     <style>
@@ -57,6 +56,148 @@
         nav a:hover {
             color: darkgray;
         }
+    .comment-form-container h3 {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .comment-form-container form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .comment-form-container textarea {
+        width: 50%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        resize: vertical;
+        min-height: 100px;
+        transition: border-color 0.2s ease;
+    }
+
+    .comment-form-container textarea:focus {
+        border-color: #B55D51;
+        outline: none;
+    }
+
+    .comment-form-container button {
+        background-color: #B55D51;
+        color: #fff;
+        border: none;
+        width: 20%;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+
+    .comment-form-container button:hover {
+        background-color: #9a4a3f;
+    }
+    
+
+.comment-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.user-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.username {
+    font-size: 16px;
+    color: #B55D51;
+}
+
+.comment-text {
+    font-size: 14px;
+    color: #333;
+    margin: 10px 0;
+}
+
+.edit-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.edit-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.stars-container {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.save-button,
+.cancel-button,
+.edit-button,
+.delete-button {
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.save-button {
+    background-color: #4CAF50;
+}
+
+.cancel-button {
+    background-color: #ff4d4d;
+}
+
+.edit-button {
+    background-color: #4CAF50;
+}
+
+.delete-button {
+    background-color: #ff4d4d;
+}
+
+.no-comments {
+    text-align: center;
+    color: #666;
+    font-size: 16px;
+}
+
     </style>
 
     <nav>
@@ -75,8 +216,7 @@
 
     <h1>{{ $recipe->recipeTitle }}</h1>
     <h3>{{ $recipe->description }}</h3>
-    <img src="https://th.bing.com/th/id/OIP.ydNry8zoLz4BzraMRDhvXwHaF-?rs=1&pid=ImgDetMain" alt="{{ $recipe->recipeTitle }}">
-    <h4>Publié le : {{ $recipe->created_at->format('d M Y') }}</h4>
+    <img src="{{ asset($recipe->picture) }}"  alt="{{ $recipe->recipeTitle }}">
     <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px; padding: 0 20px;">
     
         <div style="color: #B55D51; display: flex; align-items: center; gap: 8px;">
@@ -163,24 +303,41 @@
     @foreach($comments as $comment)
         <p><strong>{{ $comment->utilisateur->username }}</strong>: {{ $comment->content }}</p>
     @endforeach --}}
-    <div>
-        <h3>Ajouter un commentaire:</h3>
+    <div class="comment-form-container">
+        <h3>Add comment</h3>
         <form action="{{ route('comments.store', $recipe->id) }}" method="POST">
             @csrf
             <textarea name="content" placeholder="Ajouter un commentaire..." rows="4" required></textarea>
             <button type="submit">Envoyer</button>
         </form>
     </div>
+    
+    <div class="container">
+        <h3>Comments :</h3>
+        @if($recipe->comments->isEmpty())
+            <p class="no-comments">No comment for the moment.</p>
+        @else
+            @foreach($recipe->comments as $comment)
+                <div class="comment-item">
+                    <div class="user-info">
+                        <span class="username">{{ $comment->utilisateur->username }}</span>-<p class="comment-date">{{ $comment->created_at->format('d-m-Y H:i') }}</p>
 
-    <div>
+                    </div>
+                    <p class="comment-text">{{ $comment->content }}</p>
+                </div>
+            @endforeach
+        @endif
+    </div>
+    
+    {{-- <div>
         <h3>Commentaires:</h3>
         @foreach($recipe->comments as $comment)
             <div>
-                <p><strong>{{ $comment->utilisateur->username }}</strong> a commenté le {{ $comment->created_at->format('d-m-Y H:i') }} :</p>
+                <p><strong>{{ $comment->utilisateur->username }}</strong>-{{ $comment->created_at->format('d-m-Y H:i') }}</p>
                 <p>{{ $comment->content }}</p>
             </div>
         @endforeach
-    </div>
+    </div> --}}
 
    
 
