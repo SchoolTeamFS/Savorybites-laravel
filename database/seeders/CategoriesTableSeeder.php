@@ -28,7 +28,7 @@ class CategoriesTableSeeder extends Seeder
             ],
             [
                 'name' => 'Salad',
-                'image' => 'images/categimage/salad.jpg'
+                'image' => 'images/categimage/salade.jpg'
             ],
             [
                 'name' => 'Soup',
