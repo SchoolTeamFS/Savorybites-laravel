@@ -72,7 +72,7 @@ class RecipeController extends Controller
         $topRecipes = Recipe::with(['ratings', 'category']) 
             ->get()
             ->sortByDesc(fn($recipe) => $recipe->ratings->avg('rating'))
-            ->take(5);
+            ->take(4);
         $recipes = Recipe::with('category')->get();
         $categories = Category::all()->pluck('image', 'name');
         $latestRecipes = Recipe::latest()->take(15)->get();
