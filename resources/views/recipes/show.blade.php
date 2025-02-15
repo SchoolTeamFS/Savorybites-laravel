@@ -113,7 +113,7 @@
     
     
     <div class="comment-form-container" style="width: 50%">
-        <h3>Add comment and rate</h3>
+        <h3>Comments</h3>
         <form action="{{ route('comments.store', $recipe->id) }}" method="POST">
             @csrf
             <textarea name="content" placeholder="Ajouter un commentaire..." rows="4" ></textarea>

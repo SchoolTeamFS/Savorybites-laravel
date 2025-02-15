@@ -45,24 +45,35 @@ class RecipeController extends Controller
     }
     public function show($category, $recipeTitle)
     {
-        
         $categoryName = str_replace('-', ' ', $category);
         $category = Category::where('name', $categoryName)->firstOrFail();
         $recipe = Recipe::where('category_id', $category->id)
-                        ->where('recipeTitle', str_replace('-', ' ', $recipeTitle)) 
+                        ->where('recipeTitle', str_replace('-', ' ', $recipeTitle))
                         ->firstOrFail();
         $ingredients = $recipe->ingredients;
         $preparationSteps = $recipe->preparationSteps;
         $comments = $recipe->comments;
         $ratings = $recipe->ratings;
-        $admin=Utilisateur::where('role_id',1)->first();
+        $admin = Utilisateur::where('role_id', 1)->first();
         $relatedRecipes = Recipe::where('category_id', $recipe->category_id)
-        ->where('id', '!=', $recipe->id)  // Exclure la recette actuelle
-        ->limit(3)
-        ->get();
-        return view('recipes.show', compact('recipe', 'ingredients', 'preparationSteps', 'comments', 'ratings', 'category','admin', 'relatedRecipes'));
+                                ->where('id', '!=', $recipe->id)
+                                ->limit(3)
+                                ->get();
+        return view('recipes.show', compact('recipe', 'ingredients', 'preparationSteps', 'comments', 'ratings', 'category', 'admin', 'relatedRecipes'));
     }
-
+    
+ 
+    public function topRecipes()
+    {
+        $topRecipes = Recipe::with(['ratings', 'category']) 
+            ->get()
+            ->sortByDesc(fn($recipe) => $recipe->ratings->avg('rating'))
+            ->take(5);
+        return view('layouts.home', ['topRecipes' => $topRecipes]);
+    }
+    
+    
+    
 
     
     /**
