@@ -21,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
      * Bootstrap any application services.
      */
     public function boot(): void
-    {
+    {//bdaw commentaire mnhna
         View::composer('layouts.navigation', function ($view) {
             // Récupérer les catégories
             $categories = Category::all();
@@ -33,6 +33,7 @@ class AppServiceProvider extends ServiceProvider
                 'user' => $user
             ]);
         });
+        //lnhna
     }
 
 }

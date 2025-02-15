@@ -23,7 +23,7 @@ class DashboardServiceProvider extends ServiceProvider
      * Bootstrap services.
      */
     public function boot(): void
-    {
+    {//bdaw commentaire mnhna
          // Fetch all users and comments
          $users = User::all();
          $comments = Comment::all();
@@ -92,6 +92,6 @@ class DashboardServiceProvider extends ServiceProvider
             'topActiveUsers' => $topActiveUsers,
             'averageRating' => $averageRating,
             'categoryRatings' => $categoryRatings,
-        ]);
+        ]);//bdaw commentaire mnhna
     }
 }

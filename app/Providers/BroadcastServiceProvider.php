@@ -10,10 +10,12 @@ class BroadcastServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
+    //bdaw commentaire mnhna
     public function boot(): void
     {
         Broadcast::routes();
 
         require base_path('routes/channels.php');
     }
+    //bdaw commentaire mnhna
 }

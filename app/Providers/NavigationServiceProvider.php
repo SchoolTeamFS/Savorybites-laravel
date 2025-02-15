@@ -22,7 +22,7 @@ class NavigationServiceProvider extends ServiceProvider
      * Bootstrap services.
      */
     public function boot(): void
-    {
+    {//bdaw commentaire mnhna
         View::composer('layouts.navigation', function ($view) {
             // Récupérer les catégories
             $categories = Category::all();
@@ -34,5 +34,6 @@ class NavigationServiceProvider extends ServiceProvider
                 'user' => $user
             ]);
         });
+        //bdaw commentaire mnhna
     }
 }
