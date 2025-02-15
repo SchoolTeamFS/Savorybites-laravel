@@ -57,7 +57,7 @@
 
     <style>
         .carousel-container {
-            width: 90%;
+            width: 100%;
             margin: auto;
             position: relative;
             overflow: hidden;
