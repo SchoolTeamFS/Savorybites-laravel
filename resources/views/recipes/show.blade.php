@@ -41,18 +41,26 @@
             $starColor = $note > 0 ? '#B55D51' : ''; 
         @endphp
 
-<div class="flex items-center">
-    @for ($i = 1; $i <= 5; $i++)
-        @if ($i <= $entier)
-            <i class="fas fa-star" style="color: {{ $starColor }}; font-size: 1.2em;"></i> 
-        @elseif ($i == $entier + 1 && $decimal > 0)
-            <i class="fas fa-star-half-alt" style="color: {{ $starColor }}; font-size: 1.2em;"></i> 
-        @else
-            <i class="far fa-star text-gray-400"></i> 
-        @endif
-    @endfor
-</div>
-
+        <div class="flex items-center">
+            @for ($i = 1; $i <= 5; $i++)
+                @if ($i <= $entier)
+                    <i class="fas fa-star" style="color: {{ $starColor }}; font-size: 1.2em;"></i> 
+                @elseif ($i == $entier + 1 && $decimal > 0)
+                    <i class="fas fa-star-half-alt" style="color: {{ $starColor }}; font-size: 1.2em;"></i> 
+                @else
+                    <i class="far fa-star text-gray-400"></i> 
+                @endif
+            @endfor
+        </div>
+        <form action="" method="">
+            @csrf
+            <button type="submit" class="inline-flex items-center gap-2 px-4 py-2 border rounded text-[#B55D51] bg-transparent border-[#B55D51]">
+                <i class="fas fa-heart"></i>
+                <span>Save</span>
+            </button>
+        </form>
+        
+        
     </div>
     <div class="ing-img">
         <div class="left-side">
@@ -112,10 +120,6 @@
             </div>
         </div>
     </div>
-    
-    
-    
-    
     <div class="comment-form-container" style="width: 50%">
         <h3>Comments</h3>
         <form action="{{ route('comments.store', $recipe->id) }}" method="POST">
