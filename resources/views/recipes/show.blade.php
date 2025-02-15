@@ -168,7 +168,7 @@
                                 @csrf
                                 @method('PUT')
                                 <textarea name="content" rows="2">{{ $comment->content }}</textarea>
-                                <input style=" width: 50%;height: 50px;border: 1px solid #ddd; border-radius: 5px;" type="number" name="rating" min="1" max="5" step="0.1" value="{{ $rating ? $rating->rating : 1 }}">
+                                <input style=" width: 50%;height: 50px;border: 1px solid #ddd; border-radius: 5px;" type="number" name="rating"  value="{{ $rating ? $rating->rating : 1 }}">
                                 <button type="submit" class="btn-edit">Update</button>
                             </form>
                             
