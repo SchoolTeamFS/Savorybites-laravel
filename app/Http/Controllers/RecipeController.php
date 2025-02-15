@@ -56,9 +56,14 @@ class RecipeController extends Controller
         $comments = $recipe->comments;
         $ratings = $recipe->ratings;
         $admin=Utilisateur::where('role_id',1)->first();
-        return view('recipes.show', compact('recipe', 'ingredients', 'preparationSteps', 'comments', 'ratings', 'category','admin'));
+        $relatedRecipes = Recipe::where('category_id', $recipe->category_id)
+        ->where('id', '!=', $recipe->id)  // Exclure la recette actuelle
+        ->limit(3)
+        ->get();
+        return view('recipes.show', compact('recipe', 'ingredients', 'preparationSteps', 'comments', 'ratings', 'category','admin', 'relatedRecipes'));
     }
-    
+
+
     
     /**
      * Display the specified resource.

@@ -51,6 +51,7 @@ Route::get('/{category}', [CategoryController::class, 'showCategory'])->name('re
 use App\Http\Controllers\CommentController;
 
 Route::post('/recipe/{recipe}/comment', [CommentController::class, 'store'])->name('comments.store');
+Route::get('/recipes/{id}', [RecipeController::class, 'show'])->name('recipes.show');
 
 Route::post('/recipe/{recipeId}/comment', [CommentController::class, 'store'])->name('comments.store');
 Route::put('/comment/{commentId}', [CommentController::class, 'update'])->name('comments.update');

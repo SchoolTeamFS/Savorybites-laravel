@@ -51,53 +51,74 @@
         </div>
     </div>
     <div class="ing-img">
-        <img src="{{ asset($recipe->picture) }}"  class="recipeimg" alt="{{ $recipe->recipeTitle }}">
-        <div class="ingredients-container">
-            <h2>Ingrédients</h2>
-            @foreach($ingredients as $ingredient)
-                <div class="ingredient-item">
-                    <input type="checkbox">
-                    <span>{{ $ingredient->ingredient }}</span>
+        <div class="left-side">
+            <img src="{{ asset($recipe->picture) }}" class="recipeimg" alt="{{ $recipe->recipeTitle }}">
+            <div class="instructions-container">
+                <h2>Instructions</h2>
+                <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                    <ol>
+                        @foreach($preparationSteps as $index => $step)
+                            <li style="margin-bottom: 10px; display: flex; align-items: center;">
+                                <div style="
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    width: 20px;
+                                    height: 20px;
+                                    border: 2px solid #B55D51;
+                                    border-radius: 4px;
+                                    margin-right: 10px;
+                                    font-size: 12px;
+                                    font-weight: bold;
+                                    color: #fff;
+                                    background-color: #B55D51;">
+                                    {{ $index + 1 }}
+                                </div>
+                                <span>{{ $step->step }}</span>
+                            </li>
+                        @endforeach
+                    </ol>
                 </div>
-            @endforeach
+            </div>
         </div>
-    </div>
-
-    <div style="margin-left: 40px; margin-top:10px">
-        <h2>Instructions</h2>
-        <div style="display: flex; flex-direction: row; justify-content: space-between;">            
-            <ol>
-                @foreach($preparationSteps as $index => $step)
-                    <li style="margin-bottom: 10px; display: flex; align-items: center;">
-                        <div style="
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            width: 20px;
-                            height: 20px;
-                            border: 2px solid #B55D51;
-                            border-radius: 4px;
-                            margin-right: 10px;
-                            font-size: 12px;
-                            font-weight: bold;
-                            color: #fff;
-                            background-color: #B55D51;">
-                            {{ $index + 1 }}
-                        </div>
-                        <span>{{ $step->step }}</span>
-                    </li>
+    
+        <div class="right-side">
+            <div class="ingredients-container">
+                <h2>Ingredients</h2>
+                @foreach($ingredients as $ingredient)
+                    <div class="ingredient-item">
+                        <input type="checkbox">
+                        <span>{{ $ingredient->ingredient }}</span>
+                    </div>
                 @endforeach
-            </ol>
+            </div>
             
+            <div class="related-recipes">
+                <h2>Related recipes</h2>
+                <div class="recipes-list">
+                    @foreach ($relatedRecipes as $related)
+                        <div class="recipe-item">
+                            <a href="{{ route('recipe.show', ['category' => $category->name, 'title' => str_replace(' ', '-', $related->recipeTitle)]) }}">
+                                <img src="{{ asset($related->picture) }}" class="related_img" alt="{{ $related->recipeTitle }}">
+                                <h4>{{ $related->recipeTitle }}</h4>
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
         </div>
     </div>
+    
+    
+    
+    
     <div class="comment-form-container" style="width: 50%">
         <h3>Add comment and rate</h3>
         <form action="{{ route('comments.store', $recipe->id) }}" method="POST">
             @csrf
-            <textarea name="content" placeholder="Ajouter un commentaire..." rows="4" required></textarea>
+            <textarea name="content" placeholder="Ajouter un commentaire..." rows="4" ></textarea>
             <label for="rating">Notez cette recette :</label>
-            <input type="number" id="rating" name="rating" min="1" max="5" step="0.1" required>
+            <input type="number" id="rating" name="rating" min="1" max="5" step="0.1" value="1" >
             <button type="submit">Envoyer</button>
         </form>
     </div>
@@ -105,15 +126,15 @@
         @if($recipe->comments->isEmpty())
             <p class="no-comments">No comment for the moment.</p>
         @else
-            @foreach($recipe->comments as $comment)
-                <div class="comment-item">
+        @foreach($recipe->comments->sortByDesc('created_at') as $comment)                
+            <div class="comment-item">
                     <div class="comment-content">
                         <div class="user-info">
                             <div class="user-photo-container">
                                 @if ($comment->utilisateur && $comment->utilisateur->image)
                                     <img class="user-photo" src="{{ asset($comment->utilisateur->image) }}" alt="Image de l'utilisateur">
                                 @else
-                                    <img class="user-photo" src="https://static.vecteezy.com/system/resources/previews/020/911/740/non_2x/user-profile-icon-profile-avatar-user-icon-male-icon-face-icon-profile-icon-free-png.png" alt="Image par défaut">
+                                    <img class="user-photo" src="https://th.bing.com/th/id/OIP.hGSCbXlcOjL_9mmzerqAbQHaHa?rs=1&pid=ImgDetMain" alt="Image par défaut">
                                 @endif
                             </div>
                             <div class="user-details">
@@ -142,17 +163,20 @@
                         </div>
     
                         @if ($comment->utilisateur_id === auth()->id())
-                            <form action="{{ route('comments.update', $comment->id) }}" method="POST" class="edit-form">
-                                @csrf
-                                @method('PUT')
-                                <textarea name="content" rows="2">{{ $comment->content }}</textarea>
-                                <button type="submit" class="btn-edit">Update</button>
-                            </form>
-                            <form action="{{ route('comments.destroy', $comment->id) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?');" class="delete-form">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn-delete">Delete</button>
-                            </form>
+                            <div style="display: flex">
+                                <form action="{{ route('comments.update', $comment->id) }}" method="POST" class="edit-form">
+                                    @csrf
+                                    @method('PUT')
+                                    <textarea name="content" rows="2">{{ $comment->content }}</textarea>
+                                    <button type="submit" class="btn-edit">Update</button>
+                                </form>
+                                <form action="{{ route('comments.destroy', $comment->id) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?');" class="delete-form">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn-delete">Delete</button>
+                                </form>
+                            </div>
+                           
                         @elseif(auth()->user()->utilisateur && auth()->user()->utilisateur->role && auth()->user()->utilisateur->role->name === 'Admin')
                             <form action="{{ route('comments.destroy', $comment->id) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?');" class="delete-form">
                                 @csrf
