@@ -44,8 +44,7 @@ class DashboardServiceProvider extends ServiceProvider
         $recipes = Recipe::with('ratings')->get();
 
         $totalRating = $recipes->flatMap->ratings->sum('rating');
-        $totalRecipes = $recipes->count();
-        $averageRating = $totalRating ? round($totalRating / $totalRecipes, 2) : 0;
+        $averageRating = $recipes->flatMap->ratings->avg('rating');
 
         $color = [
             ['color' => '#FF6838'],
