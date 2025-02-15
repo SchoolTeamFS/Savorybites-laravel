@@ -14,7 +14,7 @@ class CommentController extends Controller
     {
         $request->validate([
             'content' => 'required|string',
-            'rating' => 'numeric|min:1|max:5|step:0.5',
+            'rating' => 'numeric|min:1|max:5',
         ]);
         $comment = new Comment();
         $comment->content = $request->content;
@@ -50,7 +50,7 @@ class CommentController extends Controller
     }
     $request->validate([
         'content' => 'required|string',
-        'rating' => 'numeric|min:1|max:5|step:0.5',
+        'rating' => 'required|numeric|min:1|max:5', 
     ]);
     $comment->content = $request->content;
     $rating = Rating::where('utilisateur_id', auth()->id())
@@ -72,7 +72,7 @@ class CommentController extends Controller
     public function destroy($commentId)
     {
         $comment = Comment::findOrFail($commentId);
-        if ($comment->utilisateur_id === auth()->id() || auth()->user()->utilisateur->role->name === 'admin') {
+        if ($comment->utilisateur_id === auth()->id() || auth()->user()->utilisateur->role->name === 'Admin') {
             $comment->delete();
             $rating = Rating::where('utilisateur_id', auth()->id())
                             ->where('recipe_id', $comment->recipe_id)
