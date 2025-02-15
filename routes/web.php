@@ -57,7 +57,6 @@ Route::middleware('auth')->group(function () {
 Route::get('/categories', [CategoryController::class, 'index'])->name('recipes.listcateg');
 
 
-// Recipe detail route, expecting both a category slug and a title parameter
 Route::get('/{category}/{title}', [RecipeController::class, 'show'])->name('recipe.show');
 Route::get('/recipes/{id}', [RecipeController::class, 'show'])->name('recipe.show');
 // Category detail route (e.g., list all recipes within a category)
@@ -65,4 +64,10 @@ Route::get('/{category}', [CategoryController::class, 'showCategory'])->name('re
 use App\Http\Controllers\CommentController;
 
 Route::post('/recipe/{recipe}/comment', [CommentController::class, 'store'])->name('comments.store');
+// Route::get('/recipes/{id}', [RecipeController::class, 'show'])->name('recipes.show');
+Route::get('/', [RecipeController::class, 'popularCategories'])->name('home');
 
+Route::post('/recipe/{recipeId}/comment', [CommentController::class, 'store'])->name('comments.store');
+Route::put('/comment/{commentId}', [CommentController::class, 'update'])->name('comments.update');
+Route::delete('/comment/{commentId}', [CommentController::class, 'destroy'])->name('comments.destroy');
+Route::get('/', [RecipeController::class, 'topRecipes'])->name('home');

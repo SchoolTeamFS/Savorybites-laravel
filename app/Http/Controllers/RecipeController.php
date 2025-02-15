@@ -94,24 +94,47 @@ class RecipeController extends Controller
     }
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('topRecipes');
     }
     public function show($category, $recipeTitle)
     {
-        
         $categoryName = str_replace('-', ' ', $category);
         $category = Category::where('name', $categoryName)->firstOrFail();
         $recipe = Recipe::where('category_id', $category->id)
-                        ->where('recipeTitle', str_replace('-', ' ', $recipeTitle)) 
+                        ->where('recipeTitle', str_replace('-', ' ', $recipeTitle))
                         ->firstOrFail();
+    
         $ingredients = $recipe->ingredients;
         $preparationSteps = $recipe->preparationSteps;
         $comments = $recipe->comments;
-        $ratings = $recipe->ratings;
-        $admin=Utilisateur::where('role_id',1)->first();
-        return view('recipes.show', compact('recipe', 'ingredients', 'preparationSteps', 'comments', 'ratings', 'category','admin'));
+    
+        $ratings = $recipe->ratings()->avg('rating'); 
+        $admin = Utilisateur::where('role_id', 1)->first();
+        $relatedRecipes = Recipe::where('category_id', $recipe->category_id)
+                                ->where('id', '!=', $recipe->id)
+                                ->limit(3)
+                                ->get();
+    
+        return view('recipes.show', compact('recipe', 'ingredients', 'preparationSteps', 'comments', 'ratings', 'category', 'admin', 'relatedRecipes'));
     }
     
+    
+ 
+    public function topRecipes()
+    {
+        $topRecipes = Recipe::with(['ratings', 'category']) 
+            ->get()
+            ->sortByDesc(fn($recipe) => $recipe->ratings->avg('rating'))
+            ->take(4);
+        $recipes = Recipe::with('category')->get();
+        $categories = Category::all()->pluck('image', 'name');
+        $latestRecipes = Recipe::latest()->take(15)->get();
+        return view('layouts.home', compact('topRecipes', 'recipes', 'categories', 'latestRecipes'));
+
+    }
+    
+    
+
     
     /**
      * Display the specified resource.
