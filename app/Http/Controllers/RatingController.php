@@ -4,34 +4,62 @@ namespace App\Http\Controllers;
 
 use App\Models\Rating;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class RatingController extends Controller
 {
     /**
-     * Store a new rating for a recipe.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $recipeId
-     * @return \Illuminate\Http\RedirectResponse
+     * Display a listing of the resource.
      */
-    public function store(Request $request, $recipeId)
+    public function index()
     {
-        // $existingRating = Rating::where('recipe_id', $recipeId)
-        //     ->where('utilisateur_id', Auth::id())
-        //     ->first();
+        //
+    }
 
-        // if ($existingRating) {
-        //     return redirect()->back()->with('error', 'Vous avez déjà noté cette recette.');
-        // }
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
 
-        // $rating = new Rating();
-        // $rating->utilisateur_id = Auth::id();
-        // $rating->recipe_id = $recipeId;
-        // $rating->rating = $request->input('rating');  
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        //
+    }
 
-        // $rating->save();
+    /**
+     * Display the specified resource.
+     */
+    public function show(Rating $rating)
+    {
+        //
+    }
 
-        // return redirect()->route('recipe.show', $recipeId)->with('success', 'Votre note a été enregistrée.');
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Rating $rating)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Rating $rating)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Rating $rating)
+    {
+        //
     }
 }

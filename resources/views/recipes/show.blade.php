@@ -117,7 +117,7 @@
         <form action="{{ route('comments.store', $recipe->id) }}" method="POST">
             @csrf
             <textarea name="content" placeholder="Ajouter un commentaire..." rows="4" ></textarea>
-            <label for="rating">Notez cette recette :</label>
+            <label for="rating">Add raiting</label>
             <input type="number" id="rating" name="rating" min="1" max="5" step="0.1" value="1" >
             <button type="submit">Envoyer</button>
         </form>
@@ -163,27 +163,30 @@
                         </div>
     
                         @if ($comment->utilisateur_id === auth()->id())
-                            <div style="display: flex">
-                                <form action="{{ route('comments.update', $comment->id) }}" method="POST" class="edit-form">
-                                    @csrf
-                                    @method('PUT')
-                                    <textarea name="content" rows="2">{{ $comment->content }}</textarea>
-                                    <button type="submit" class="btn-edit">Update</button>
-                                </form>
-                                <form action="{{ route('comments.destroy', $comment->id) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?');" class="delete-form">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn-delete">Delete</button>
-                                </form>
-                            </div>
-                           
-                        @elseif(auth()->user()->utilisateur && auth()->user()->utilisateur->role && auth()->user()->utilisateur->role->name === 'Admin')
+                        <div style="display: flex">
+                            <form action="{{ route('comments.update', $comment->id) }}" method="POST" class="edit-form">
+                                @csrf
+                                @method('PUT')
+                                <textarea name="content" rows="2">{{ $comment->content }}</textarea>
+                                <input style=" width: 50%;height: 50px;border: 1px solid #ddd; border-radius: 5px;" type="number" name="rating" min="1" max="5" step="0.1" value="{{ $rating ? $rating->rating : 1 }}">
+                                <button type="submit" class="btn-edit">Update</button>
+                            </form>
+                            
                             <form action="{{ route('comments.destroy', $comment->id) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?');" class="delete-form">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn-delete">Delete</button>
                             </form>
-                        @endif
+                        </div>
+                    
+                    @elseif(auth()->user()->utilisateur && auth()->user()->utilisateur->role && auth()->user()->utilisateur->role->name === 'Admin')
+                        <form action="{{ route('comments.destroy', $comment->id) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?');" class="delete-form">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn-delete">Delete</button>
+                        </form>
+                    @endif
+                    
                     </div>
                 </div>
             @endforeach

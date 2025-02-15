@@ -7,7 +7,6 @@
                 <a href="{{ route('recipe.show', ['category' => Str::slug($recipe->category->name), 'title' => Str::slug($recipe->recipeTitle)]) }}" 
                     class="carousel-item" data-index="{{ $index }}">
                     <img src="{{ asset($recipe->picture) }}" alt="{{ $recipe->recipeTitle }}">
-                    <h3 class="carousel-title">{{ $recipe->recipeTitle }}</h3>
                 </a>
             @endforeach
         </div>
