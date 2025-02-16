@@ -80,6 +80,6 @@ class DashboardServiceProvider extends ServiceProvider
             'topActiveUsers' => $topActiveUsers,
             'averageRating' => $averageRating,
             'categoryRatings' => $categoryRatings,
-        ]);
+        ]);//bdaw commentaire mnhna
     }
 }

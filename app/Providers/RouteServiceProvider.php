@@ -22,6 +22,7 @@ class RouteServiceProvider extends ServiceProvider
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
      */
+    //bdaw commentaire mnhna
     public function boot(): void
     {
         $this->configureRateLimiting();
@@ -45,4 +46,5 @@ class RouteServiceProvider extends ServiceProvider
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
     }
+    //bdaw commentaire mnhna
 }

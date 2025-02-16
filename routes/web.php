@@ -40,13 +40,26 @@ Route::middleware('auth')->group(function () {
     Route::delete('/update-user/{id}', [ManagerController::class, 'destroy'])->name('manage-user.destroy');
     Route::get('/export-recipes', [RecipeController::class, 'exportCSV'])->name('recipes.export');
     Route::get('/export-users', [UserController::class, 'exportCSV'])->name('users.export');
+    //les routes pour recipes
+    Route::get('/recipes', [RecipeController::class, 'index'])->name('recipes.index');
+    Route::get('/recipes/create', [RecipeController::class, 'create'])
+        ->name('recipes.create')
+        ->middleware('auth');
+    Route::post('/recipes', [RecipeController::class, 'store'])
+        ->name('recipes.store')
+        ->middleware('auth');
+    Route::post('/recipes', [RecipeController::class, 'store'])->name('recipes.store');
 });
-Route::get('/recipes', [RecipeController::class, 'index'])->name('recipes.index');
+
+
+
+// Category listing route
 Route::get('/categories', [CategoryController::class, 'index'])->name('recipes.listcateg');
 
 
 Route::get('/{category}/{title}', [RecipeController::class, 'show'])->name('recipe.show');
-
+// Route::get('/recipes/{id}', [RecipeController::class, 'show'])->name('recipe.show');
+// Category detail route (e.g., list all recipes within a category)
 Route::get('/{category}', [CategoryController::class, 'showCategory'])->name('recipes.categ');
 
 use App\Http\Controllers\CommentController;

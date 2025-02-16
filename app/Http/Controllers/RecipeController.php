@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Recipe;
+use App\Models\Ingredient;
+use App\Models\PreparationStep;
 use App\Models\Category;
 use App\Models\Utilisateur;
 use App\Exports\RecipesExport;
@@ -17,11 +19,13 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        // Récupérer toutes les recettes depuis la base de données
-        $recipes = Recipe::with('ingredients', 'preparationSteps')->get();
+        
+        $allRecipes = Recipe::with(['comments', 'ratings'])->get();
 
-        // Retourner la vue avec les données
-        return view('recipesCRUD.recepies', compact('recipes'));
+        // $topRecipes = $allRecipes->sortByDesc(fn ($recipe) => $recipe->averageRating())->take(12);
+    
+        return view('recipesCRUD.recepies', compact('allRecipes'));
+
     }
 
     /**
@@ -29,7 +33,11 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        //
+     
+        $categories = Category::all();
+
+     
+        return view('recipesCRUD.create', compact('categories'));
     }
 
     /**
@@ -37,7 +45,52 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    
+      
+       $validatedData = $request->validate([
+        'recipeTitle' => 'required|string|max:255',
+        'description' => 'required|string',
+        'category_id' => 'required|exists:categories,id', 
+        'picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'ingredients' => 'required|array', 
+        'ingredients.*' => 'string', 
+        'preparationSteps' => 'required|array',
+        'preparationSteps.*' => 'string', 
+        ]);
+        //ajout de recipe
+
+        $recipe = new Recipe();
+        $recipe->recipeTitle = $validatedData['recipeTitle'];
+        $recipe->description = $validatedData['description'];
+        $recipe->category_id = $validatedData['category_id'];
+        $recipe->utilisateur_id = auth()->id(); 
+
+        if ($request->hasFile('picture')) {
+            $path = $request->file('picture')->move(public_path('imagesRecepies/Normal'), $request->file('picture')->getClientOriginalName());
+            $recipe->picture = 'imagesRecepies/Normal/' . $request->file('picture')->getClientOriginalName();
+        }
+        
+      
+        $recipe->save();
+        //ajout d'image
+        foreach ($validatedData['ingredients'] as $ingredientName) {
+            $ingredient = new Ingredient();
+            $ingredient->recipe_id = $recipe->id; 
+            $ingredient->ingredient = $ingredientName; 
+            $ingredient->save(); 
+        }
+
+        
+        foreach ($validatedData['preparationSteps'] as $order => $step) {
+            $stepInstance = new PreparationStep();
+            $stepInstance->recipe_id = $recipe->id;
+            $stepInstance->step = $step;
+            $stepInstance->order = $order + 1; 
+            $stepInstance->save();
+        }
+
+       
+        return redirect()->route('recipes.index')->with('success', 'La recette a été créée avec succès.');
     }
     public function __construct()
     {

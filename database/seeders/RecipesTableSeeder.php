@@ -380,13 +380,13 @@ class RecipesTableSeeder extends Seeder
             ],
             [
                 'id' => 14,
-                'recipeTitle' => 'Pulled Pork Sandwiches',
-                'description' => 'Tender pulled pork served on a bun with BBQ sauce and coleslaw.',
+                'recipeTitle' => 'Pulled beef Sandwiches',
+                'description' => 'Tender pulled beef served on a bun with BBQ sauce and coleslaw.',
                 'category_id' => 1,
                 'utilisateur_id'=>2,
-                'picture' => 'imagesRecepies/Normal/pepperoni_pizza.jpg', // Note: The original file has a duplicate image reference.
+                'picture' => 'imagesRecepies/Normal/bbq_ribs.jpg',
                 'ingredients' => [
-                    '1 kg pork shoulder',
+                    '1 kg beef shoulder',
                     '1 cup BBQ sauce',
                     '1/4 cup brown sugar',
                     '1 tablespoon paprika',
@@ -398,12 +398,12 @@ class RecipesTableSeeder extends Seeder
                 'preparationSteps' => [
                     'Preheat the oven to 160°C (320°F).',
                     'In a bowl, mix the brown sugar, paprika, garlic powder, salt, and pepper.',
-                    'Rub the seasoning mixture all over the pork shoulder.',
-                    'Place the pork in a baking dish and cover with foil.',
-                    'Bake for 4-5 hours, until the pork is tender and falls apart easily.',
-                    'Shred the pork with two forks.',
-                    'Mix the shredded pork with BBQ sauce.',
-                    'Serve the pulled pork on burger buns with coleslaw.'
+                    'Rub the seasoning mixture all over the beef shoulder.',
+                    'Place the beef in a baking dish and cover with foil.',
+                    'Bake for 4-5 hours, until the beef is tender and falls apart easily.',
+                    'Shred the beef with two forks.',
+                    'Mix the shredded beef with BBQ sauce.',
+                    'Serve the pulled beef on burger buns with coleslaw.'
                 ]
             ],
             [
