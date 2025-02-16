@@ -53,13 +53,58 @@
             @endfor
         </div>
         {{----------------------- BTN_FAV -------------------}}
-        <form action="" method="">
+        <form id="favorite-form-{{ $recipe->id }}" action="{{ route('favorites.store') }}" method="POST">
             @csrf
-            <button type="submit" class="inline-flex items-center gap-2 px-4 py-2 border rounded text-[#B55D51] bg-transparent border-[#B55D51]">
-                <i class="fas fa-heart"></i>
-                <span>Save</span>
+            <button type="button" class="favorite-btn inline-flex items-center gap-2 px-4 py-2 border rounded text-[#B55D51] bg-transparent border-[#B55D51]"
+                    data-recipe-id="{{ $recipe->id }}"
+                    data-is-saved="{{ in_array($recipe->id, $userFavorites ?? []) ? 'true' : 'false' }}">
+                @if (in_array($recipe->id, $userFavorites ?? []))
+                  
+                    <i class="fas fa-heart" style="color: #B55D51;"></i> Saved
+                @else
+
+                    <i class="far fa-heart"></i> Save
+                @endif
             </button>
         </form>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+        
+            document.querySelectorAll('.favorite-btn').forEach(button => {
+                button.addEventListener('click', function () {
+                    const recipeId = this.dataset.recipeId; 
+                    const form = this.closest('form'); 
+                    const isSaved = this.dataset.isSaved === 'true';
+
+                    fetch(form.action, {
+                        method: isSaved ? 'DELETE' : 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ recipe_id: recipeId })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === 'success') {
+        
+                            if (isSaved) {
+                            
+                                this.innerHTML = '<i class="far fa-heart"></i> Save';
+                                this.dataset.isSaved = 'false';
+                            } else {
+                    
+                                this.innerHTML = '<i class="fas fa-heart" style="color: #B55D51;"></i> Saved';
+                                this.dataset.isSaved = 'true';
+                                }
+                            }
+                        })
+                        .catch(error => console.error('Error:', error));
+                    });
+                });
+            });
+        </script>
+
         {{-------------------------------------------------}}
     </div>
     <div class="ing-img">

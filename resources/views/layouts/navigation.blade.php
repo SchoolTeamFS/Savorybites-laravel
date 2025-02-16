@@ -80,8 +80,7 @@
                                     <x-dropdown-link :href="route('manage-users')">
                                         {{ __('manage-users') }}
                                     </x-dropdown-link>
-                                    {{-- <x-dropdown-link :href="route('add-recipes')"> --}}
-                                    <x-dropdown-link>
+                                    <x-dropdown-link :href="route('recipes.create')">
                                         {{ __('add-recipes') }}
                                     </x-dropdown-link>
                             </x-slot>

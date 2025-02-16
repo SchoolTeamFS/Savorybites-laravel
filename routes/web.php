@@ -49,6 +49,15 @@ Route::middleware('auth')->group(function () {
         ->name('recipes.store')
         ->middleware('auth');
     Route::post('/recipes', [RecipeController::class, 'store'])->name('recipes.store');
+
+    //favorites
+    Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
+
+    Route::delete('/favorites/{favorite}', [FavoriteController::class, 'destroy'])
+        ->name('favorites.destroy')
+        ->middleware('auth');
+    Route::post('/favorites', [FavoriteController::class, 'store'])->name('favorites.store');
+
 });
 
 
@@ -58,7 +67,7 @@ Route::get('/categories', [CategoryController::class, 'index'])->name('recipes.l
 
 
 Route::get('/{category}/{title}', [RecipeController::class, 'show'])->name('recipe.show');
-Route::get('/recipes/{id}', [RecipeController::class, 'show'])->name('recipe.show');
+// Route::get('/recipes/{id}', [RecipeController::class, 'show'])->name('recipe.show');
 // Category detail route (e.g., list all recipes within a category)
 Route::get('/{category}', [CategoryController::class, 'showCategory'])->name('recipes.categ');
 use App\Http\Controllers\CommentController;
