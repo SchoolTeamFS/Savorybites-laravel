@@ -58,7 +58,7 @@ Route::get('/categories', [CategoryController::class, 'index'])->name('recipes.l
 
 
 Route::get('/{category}/{title}', [RecipeController::class, 'show'])->name('recipe.show');
-Route::get('/recipes/{id}', [RecipeController::class, 'show'])->name('recipe.show');
+// Route::get('/recipes/{id}', [RecipeController::class, 'show'])->name('recipe.show');
 // Category detail route (e.g., list all recipes within a category)
 Route::get('/{category}', [CategoryController::class, 'showCategory'])->name('recipes.categ');
 use App\Http\Controllers\CommentController;
