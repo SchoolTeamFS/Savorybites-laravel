@@ -48,10 +48,11 @@ Route::get('/categories', [CategoryController::class, 'index'])->name('recipes.l
 Route::get('/{category}/{title}', [RecipeController::class, 'show'])->name('recipe.show');
 
 Route::get('/{category}', [CategoryController::class, 'showCategory'])->name('recipes.categ');
+
 use App\Http\Controllers\CommentController;
 
 Route::post('/recipe/{recipe}/comment', [CommentController::class, 'store'])->name('comments.store');
-Route::get('/recipes/{id}', [RecipeController::class, 'show'])->name('recipes.show');
+// Route::get('/recipes/{id}', [RecipeController::class, 'show'])->name('recipes.show');
 Route::get('/', [RecipeController::class, 'popularCategories'])->name('home');
 
 Route::post('/recipe/{recipeId}/comment', [CommentController::class, 'store'])->name('comments.store');
