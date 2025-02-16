@@ -29,7 +29,7 @@
             @foreach ($latestRecipes as $recipe)
             <a href="{{ route('recipe.show', ['category' => Str::slug($recipe->category->name), 'title' => Str::slug($recipe->recipeTitle)]) }}" >
                 <div class="latest-recipe-item">
-                        <img src="{{ asset($recipe->picture) }}" alt="{{ $recipe->recipeTitle }}">
+                        <img src="{{ asset($recipe->picture) }}" alt="{{ $recipe->recipeTitle }}" style="width: 300px; height: 300px;" >
                         <h3>{{ $recipe->recipeTitle }}</h3>
                     </div>
                 </a>
