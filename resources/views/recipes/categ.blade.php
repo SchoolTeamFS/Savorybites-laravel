@@ -1,22 +1,22 @@
 <x-app-layout>
     <style>
-         nav p {
+         .nav p {
             font-style: italic;
             color: gray;
             margin-left: 40px;
         }
 
-        nav a {
+        .nav a {
             color: gray;
             text-decoration: none;
             text-transform: uppercase;
         }
 
-        nav a:hover {
+        .nav a:hover {
             color: darkgray;
         }
     </style>
-<nav>
+<nav class="nav">
     <p>
         <a href="{{ url('/') }}">Categories</a> 
         @isset($category)

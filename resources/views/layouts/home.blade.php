@@ -11,17 +11,28 @@
             @endforeach
         </div>
     </div>
-    <div style="display: flex; margin-top: 20px; justify-content: space-between; flex-wrap: wrap;">
-        <h2 style="font-family: serif; font-size: 2rem; margin-bottom: 40px; font-weight: bolder; width: 100%; text-align: left;">Popular Categories</h2>
-        @foreach ($categories as $name => $image)
-            <a href="{{ route('recipes.categ', ['category' => Str::slug($name)]) }}" style="text-decoration: none; color: inherit;">
-                <div style="text-align: center; margin: 20px; width: 180px;">
-                    <img src="{{ asset($image) }}" alt="{{ $name }}" style="width: 120px; height: 120px; border-radius: 50%;" />
-                    <h2 style="font-family: initial; margin-top: 15px; font-size: 1.2rem; font-weight: bold;">{{ $name }}</h2>
-                </div>
-            </a>
-        @endforeach
+    <div style="margin-top: 20px;margin-bottom: 20px">
+        <h2 style="font-family: serif; font-size: 2rem; margin-bottom: 40px; font-weight: bolder; text-align: left;">
+            Popular Categories
+        </h2>
+    
+        <div style="display: flex; justify-content: space-between; gap: 30px; flex-wrap: wrap;">
+            @foreach ($categories as $name => $image)
+                <a href="{{ route('recipes.categ', ['category' => Str::slug($name)]) }}" 
+                   style="text-decoration: none; color: inherit; flex: 1 1 30%; max-width: 200px;">
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <img src="{{ asset($image) }}" alt="{{ $name }}" 
+                             style="width: 120px; height: 120px; border-radius: 50%;" />
+                        <h2 style="font-family: initial; margin-top: 15px; font-size: 1.2rem; font-weight: bold;">
+                            {{ $name }}
+                        </h2>
+                    </div>
+                </a>
+            @endforeach
+        </div>
     </div>
+    
+    
     
     <div class="latest-recipes">
         <h2>Latest Recipes</h2>
@@ -29,7 +40,7 @@
             @foreach ($latestRecipes as $recipe)
             <a href="{{ route('recipe.show', ['category' => Str::slug($recipe->category->name), 'title' => Str::slug($recipe->recipeTitle)]) }}" >
                 <div class="latest-recipe-item">
-                        <img src="{{ asset($recipe->picture) }}" alt="{{ $recipe->recipeTitle }}">
+                        <img src="{{ asset($recipe->picture) }}" alt="{{ $recipe->recipeTitle }}" style="width: 300px; height: 300px;" >
                         <h3>{{ $recipe->recipeTitle }}</h3>
                     </div>
                 </a>
