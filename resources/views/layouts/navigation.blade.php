@@ -22,7 +22,11 @@
                         {{ __('Home') }}
                     </x-nav-link>
                 </div>
-
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex justify-center">
+                    <x-nav-link :href="route('manual.download')" :active="request()->routeIs('home')">
+                        {{ __('Manuel') }}
+                    </x-nav-link>
+                </div>
                 <div class="hidden sm:flex sm:items-center sm:ms-6">
                     <x-dropdown align="left" width="48">
                         <x-slot name="trigger">

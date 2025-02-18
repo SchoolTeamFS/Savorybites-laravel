@@ -50,12 +50,13 @@
                                     Drag & drop an image here, or click to select one
                                 </p>
 
-                                <!-- Show the preview of the image if it's uploaded -->
                                 @if (old('picture'))
-                                    <img src="{{ old('picture') }}" alt="Preview" class="add-uploaded-image" />
-                                @elseif ($recipe->picture)
-                                    <img src="{{ asset('storage/' . $recipe->picture) }}" alt="Preview" class="add-uploaded-image" />
-                                @endif
+                           
+                            <p id="image-url">{{ Storage::url(old('picture')) }}</p>
+                        @elseif ($recipe->picture)
+                         
+                            <p id="image-url">{{ asset('storage/' . $recipe->picture) }}</p>
+                        @endif
                             </div>
 
                             <!-- Ingredients -->
@@ -344,35 +345,46 @@
                 font-size: 1rem;
             }
         }
+  .add-dropzone {
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    margin-left:5%;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 150px;
+    max-width: 90%;
+    background-color: #f9f9f9;
+}
 
-        .add-dropzone {
-            width: 90%; 
-            margin-left: 5%; 
-            margin-bottom: 5%; 
-            padding: 20px; 
-            border: 2px dashed #ccc; 
-            border-radius: 8px;
-            background-color: #f9f9f9;
-            text-align: center;
-            cursor: pointer; 
-            transition: border-color 0.3s, background-color 0.3s; 
-        }
+.add-dropzone:hover,
+.add-dropzone.dragover {
+    border-color: #0066cc;
+    background-color: #eef5ff;
+}
 
-        .add-dropzone:hover,
-        .add-dropzone:focus {
-            border-color: #888; 
-            background-color: #f0f0f0;
-        }
+.add-dropzone p {
+    font-size: 14px;
+    color: #666;
+    margin-top: 10px;
+    font-weight: 500;
+}
 
-        .add-dropzone.dragover {
-            border-color: #6bccb9; 
-            background-color: #e0f7f0;
-        }
+.add-dropzone input[type="file"] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
 
-        .add-uploaded-image {
-            max-width: 100%; 
-            height: auto;
-            margin-top: 10px;
-        }
     </style>
 </x-app-layout>
