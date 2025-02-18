@@ -39,7 +39,7 @@ class ProfileController extends Controller
         // Update the related Utilisateur model if necessary
         if ($user->utilisateur) {
             $user->utilisateur->update([
-                'username' => $request->input('username') ?? $user->utilisateur->username,
+                'username' => $request->input('name') ?? $user->utilisateur->username,
                 'bio' => $request->input('bio') ?? $user->utilisateur->bio,
                 'image' => $this->handleImageUpload($request) ?? $user->utilisateur->image,
             ]);
@@ -48,12 +48,13 @@ class ProfileController extends Controller
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
-    // Handle image upload
-    protected function handleImageUpload($request)
+    private function handleImageUpload(Request $request)
     {
-        if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('profile_images', 'public');
-            return $path;
+        if ($request->hasFile('profilePicture')) {
+            $file = $request->file('profilePicture');
+            $filename = $file->getClientOriginalName();
+            $filePath = $file->storeAs('images/UserImages', $filename, 'public');
+            return $filePath;
         }
 
         return null;
