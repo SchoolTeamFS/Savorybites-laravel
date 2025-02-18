@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Recipe;
+use App\Models\Favorite;
 use App\Models\Ingredient;
 use App\Models\PreparationStep;
 use App\Models\Category;
@@ -19,14 +20,16 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        
         $allRecipes = Recipe::with(['comments', 'ratings'])->get();
 
-        // $topRecipes = $allRecipes->sortByDesc(fn ($recipe) => $recipe->averageRating())->take(12);
-    
-        return view('recipesCRUD.recepies', compact('allRecipes'));
+     
+        $userFavorites = Favorite::where('utilisateur_id', auth()->id())
+                                ->pluck('recipe_id')
+                                ->toArray(); 
 
+        return view('recipesCRUD.recepies', compact('allRecipes', 'userFavorites'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -39,6 +42,7 @@ class RecipeController extends Controller
      
         return view('recipesCRUD.create', compact('categories'));
     }
+   
 
     /**
      * Store a newly created resource in storage.
@@ -90,7 +94,7 @@ class RecipeController extends Controller
         }
 
        
-        return redirect()->route('recipes.index')->with('success', 'La recette a été créée avec succès.');
+        return redirect()->route('home')->with('success', 'La recette a été créée avec succès.');
     }
     public function __construct()
     {
@@ -98,30 +102,53 @@ class RecipeController extends Controller
     }
     public function show($category, $recipeTitle)
     {
+       
         $categoryName = str_replace('-', ' ', $category);
         $category = Category::where('name', $categoryName)->firstOrFail();
         $recipe = Recipe::where('category_id', $category->id)
                         ->where('recipeTitle', str_replace('-', ' ', $recipeTitle))
                         ->firstOrFail();
-    
+
+        
+        $userFavorites = auth()->check()
+            ? Favorite::where('utilisateur_id', auth()->id())
+                ->pluck('recipe_id')
+                ->toArray()
+            : [];
+
         $ingredients = $recipe->ingredients;
         $preparationSteps = $recipe->preparationSteps;
         $comments = $recipe->comments;
-    
-        $ratings = $recipe->ratings()->avg('rating'); 
+
+        $ratings = $recipe->ratings()->avg('rating');
         $admin = Utilisateur::where('role_id', 1)->first();
         $relatedRecipes = Recipe::where('category_id', $recipe->category_id)
                                 ->where('id', '!=', $recipe->id)
                                 ->limit(3)
                                 ->get();
-    
-        return view('recipes.show', compact('recipe', 'ingredients', 'preparationSteps', 'comments', 'ratings', 'category', 'admin', 'relatedRecipes'));
+
+        return view('recipes.show', compact(
+            'recipe',
+            'ingredients',
+            'preparationSteps',
+            'comments',
+            'ratings',
+            'category',
+            'admin',
+            'relatedRecipes',
+            'userFavorites' 
+        ));
+
     }
     
     
  
     public function topRecipes()
     {
+        $topRecipes12 = Recipe::with(['ratings', 'category']) 
+            ->get()
+            ->sortByDesc(fn($recipe) => $recipe->ratings->avg('rating'))
+            ->take(12);
         $topRecipes = Recipe::with(['ratings', 'category']) 
             ->get()
             ->sortByDesc(fn($recipe) => $recipe->ratings->avg('rating'))
@@ -129,7 +156,7 @@ class RecipeController extends Controller
         $recipes = Recipe::with('category')->get();
         $categories = Category::all()->pluck('image', 'name');
         $latestRecipes = Recipe::latest()->take(15)->get();
-        return view('layouts.home', compact('topRecipes', 'recipes', 'categories', 'latestRecipes'));
+        return view('layouts.home', compact('topRecipes', 'recipes', 'categories', 'latestRecipes','topRecipes12'));
 
     }
     
