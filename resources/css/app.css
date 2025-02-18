@@ -6,7 +6,9 @@
 *::before {
     box-sizing: border-box;
 }
-
+.btn-update{
+    background-color: green;
+}
 /* charts */
 .box {
     margin: 2%;

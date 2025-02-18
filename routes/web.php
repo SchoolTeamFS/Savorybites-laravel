@@ -49,6 +49,15 @@ Route::middleware('auth')->group(function () {
         ->name('recipes.store')
         ->middleware('auth');
     Route::post('/recipes', [RecipeController::class, 'store'])->name('recipes.store');
+    Route::get('/recipes/{recipe}/edit', [RecipeController::class, 'edit'])->name('recipes.edit');
+
+    Route::put('/recipes/{recipe}', [RecipeController::class, 'update'])->name('recipes.update');
+
+    Route::delete('/recipes/{id}', [RecipeController::class, 'destroy'])->name('recipes.destroy');
+
+
+
+
 
     //favorites
     Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
@@ -59,7 +68,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/favorites', [FavoriteController::class, 'store'])->name('favorites.store');
 
 });
+use App\Http\Controllers\PDFController;
 
+Route::get('/download-manual', [PDFController::class, 'downloadManual'])->name('manual.download');
 
 
 // Category listing route

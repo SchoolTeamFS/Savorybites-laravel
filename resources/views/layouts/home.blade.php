@@ -28,13 +28,12 @@
         <div class="recipes-grid">
             @foreach ($latestRecipes as $recipe)
             <a href="{{ route('recipe.show', ['category' => Str::slug($recipe->category->name), 'title' => Str::slug($recipe->recipeTitle)]) }}" >
-            <a href="{{ route('recipe.show', ['category' => Str::slug($recipe->category->name), 'title' => Str::slug($recipe->recipeTitle)]) }}" >
                 <div class="latest-recipe-item">
                         <img src="{{ asset($recipe->picture) }}" alt="{{ $recipe->recipeTitle }}">
                         <h3>{{ $recipe->recipeTitle }}</h3>
                     </div>
                 </a>
-               
+                
             @endforeach
         </div>
     </div>

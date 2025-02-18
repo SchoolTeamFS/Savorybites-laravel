@@ -174,26 +174,90 @@ class RecipeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Recipe $recipe)
-    {
-        //
-    }
+   
+     public function edit(Recipe $recipe)
+     {
+       
+         $categories = Category::all();
+         $ingredients = $recipe->ingredients()->pluck('ingredient');
+         $preparationSteps = $recipe->preparationSteps()->pluck('step');  
+         return view('recipesCRUD.edit', compact('recipe', 'categories','ingredients','preparationSteps'));
+     }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Recipe $recipe)
     {
-        //
+        $validatedData = $request->validate([
+            'recipeTitle' => 'required|string|max:255',
+            'description' => 'required|string',
+            'category_id' => 'required|exists:categories,id',
+            'picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'ingredients' => 'required|array',
+            'ingredients.*' => 'string',
+            'preparationSteps' => 'required|array',
+            'preparationSteps.*' => 'string',
+        ]);
+
+        if ($recipe->utilisateur_id !== auth()->user()->utilisateur->id) {
+            return redirect()->route('home')->with('error', 'You are not authorized to update this recipe.');
+        }
+
+        $recipe->recipeTitle = $validatedData['recipeTitle'];
+        $recipe->description = $validatedData['description'];
+        $recipe->category_id = $validatedData['category_id'];
+
+        if ($request->hasFile('picture')) {
+
+            if ($recipe->picture && file_exists(public_path($recipe->picture))) {
+                unlink(public_path($recipe->picture));
+            }
+            $path = $request->file('picture')->move(public_path('imagesRecepies/Normal'), $request->file('picture')->getClientOriginalName());
+            $recipe->picture = 'imagesRecepies/Normal/' . $request->file('picture')->getClientOriginalName();  // Save the relative path
+        }
+        $recipe->save();
+        $recipe->ingredients()->delete();
+        foreach ($validatedData['ingredients'] as $ingredientName) {
+            $ingredient = new Ingredient();
+            $ingredient->recipe_id = $recipe->id;
+            $ingredient->ingredient = $ingredientName;
+            $ingredient->save();
+        }
+
+    
+    
+        $recipe->preparationSteps()->delete();
+        foreach ($validatedData['preparationSteps'] as $order => $step) {
+            $stepInstance = new PreparationStep();
+            $stepInstance->recipe_id = $recipe->id;
+            $stepInstance->step = $step;
+            $stepInstance->order = $order + 1;
+            $stepInstance->save();
+        }
+
+    
+        return redirect()->route('home')->with('success', 'La recette a été mise à jour avec succès.');
     }
+
+    
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Recipe $recipe)
+    public function destroy($id)
     {
-        //
+        $recipe = Recipe::findOrFail($id);
+
+        $recipe->ingredients()->delete();
+        $recipe->preparationSteps()->delete();
+        $recipe->comments()->delete(); 
+
+        $recipe->delete();
+
+        return redirect()->route('home')->with('success', 'Recette supprimée avec succès.');
     }
+
     public function exportCSV()
     {
         return Excel::download(new RecipesExport, 'recipes.csv');

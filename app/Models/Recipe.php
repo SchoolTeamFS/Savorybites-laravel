@@ -12,6 +12,10 @@ class Recipe extends Model
     {
         return $this->belongsTo(Category::class);
     }
+    public function utilisateur()
+    {
+        return $this->belongsTo(Utilisateur::class);
+    }
 
     public function ingredients()
     {

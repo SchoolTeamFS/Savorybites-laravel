@@ -21,6 +21,10 @@ class Utilisateur extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function recipe()
+    {
+        return $this->hasMany(Recipe::class);
+    }
 
     public function ratings()
     {

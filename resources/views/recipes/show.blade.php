@@ -52,6 +52,23 @@
                 @endif
             @endfor
         </div>
+        <!-- @if (auth()->check() && (auth()->id() === $recipe->user_id || auth()->user()->utilisateur->role->name === 'Admin'))
+        <a href="{{ route('recipes.edit', $recipe->id) }}">Update Recipe</a>
+
+        @endif -->
+        @if (auth()->check() && (auth()->id() === $recipe->user_id || auth()->user()->utilisateur->role->name === 'Admin'))
+            <a href="{{ route('recipes.edit', $recipe->id) }}"       style="background-color: green; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none;"> Update Recipe</a>
+
+            <form action="{{ route('recipes.destroy', $recipe->id) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette recette ?');" style="display: inline;">
+                @csrf
+                @method('DELETE')
+                <button type="submit" style="background-color: #DC143C; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none;">Delete Recipe</button>
+            </form>
+        @endif
+
+
+        @if(auth()->user()->utilisateur && auth()->user()->utilisateur->role_id == 2)
+
         {{----------------------- BTN_FAV -------------------}}
         <form id="favorite-form-{{ $recipe->id }}" action="{{ route('favorites.store') }}" method="POST">
             @csrf
@@ -104,7 +121,7 @@
                 });
             });
         </script>
-
+        @endif
         {{-------------------------------------------------}}
     </div>
     <div class="ing-img">
