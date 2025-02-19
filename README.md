@@ -54,7 +54,7 @@
 
 ## 🚀 Technologies Utilisées  
 - **Back-end** : Laravel  
-- **Front-end** : Blade, HTML, CSS, JavaScript  
+- **Front-end** : Blade, HTML, CSS, JavaScript, Tailwind
 - **Base de données** : MySQL  
 
 ## 📌 Installation  
