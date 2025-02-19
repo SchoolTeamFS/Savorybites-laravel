@@ -4,9 +4,9 @@
 @section('content')
     <nav>
         <p>
-            <a href="/">Categories</a> 
+            <a href="/" style="text-transform:uppercase">Categories</a> 
             @isset($category)
-                > <a href="{{ route('recipes.categ', ['category' => str_replace(' ', '-', $category->name)]) }}">
+                > <a href="{{ route('recipes.categ', ['category' => str_replace(' ', '-', $category->name)]) }}" style="text-transform:uppercase">
                     {{ $category->name }}
                 </a>
             @endisset >

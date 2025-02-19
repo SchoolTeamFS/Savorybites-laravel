@@ -6,11 +6,11 @@ use Tests\TestCase;
 use App\Models\Favorite;
 use App\Models\User;
 use App\Models\Recipe;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+
 
 class FavoriteControllerTest extends TestCase
 {
-    use RefreshDatabase;
+   
 
     // public function testIndex()
     // {
@@ -77,7 +77,7 @@ class FavoriteControllerTest extends TestCase
     public function testDestroy()
     {
         
-        $favorite = Favorite::find(2);
+        $favorite = Favorite::find(1);
 
        
         if (!$favorite) {
@@ -85,10 +85,10 @@ class FavoriteControllerTest extends TestCase
         }
 
     
-        $response = $this->delete(route('favorites.destroy', ['favorite' => $favorite->id]));
+        $response = $this->delete(route('favorites.destroy', ['favorite' =>$this-> $favorite->id]));
 
         $this->assertDatabaseMissing('favorites', [
-            'id' => 2,
+            'id' => 1,
             'utilisateur_id' => $favorite->utilisateur_id,
             'recipe_id' => $favorite->recipe_id,
         ]);

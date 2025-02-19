@@ -99,7 +99,6 @@ nav p {
 nav a {
     color: gray;
     text-decoration: none;
-    text-transform: uppercase;
 }
 
 nav a:hover {
